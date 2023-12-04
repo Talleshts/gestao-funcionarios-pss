@@ -36,7 +36,7 @@ public class LeituraNotificacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setText("{nome.usuario}");
+        jLabel4.setText("{usuario.nome}");
 
         jLabel5.setText("Usuário");
 
