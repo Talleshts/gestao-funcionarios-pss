@@ -12,10 +12,10 @@
         <exec.mainClass>com.ufes.gestaofuncionariospss.GestaoFuncionariosPss</exec.mainClass>
     </properties>
     <repositories>
-            <repository>
-                <id>jitpack.io</id>
-                <url>https://jitpack.io</url>
-            </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -27,7 +27,6 @@
             <groupId>com.ufes</groupId>
             <artifactId>SistemaLog</artifactId>
             <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
         </dependency>
     </dependencies>
 </project>
