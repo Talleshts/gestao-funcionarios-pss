@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Arthu
@@ -149,6 +151,24 @@ public class PrincipalUsuarioView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnAlterarSenha() {
+        return btnAlterarSenha;
+    }
+
+    public JButton getBtnConfiguracoes() {
+        return btnConfiguracoes;
+    }
+
+    public JButton getBtnDeslogar() {
+        return btnDeslogar;
+    }
+
+    public JButton getBtnVisualizarNotificacoes() {
+        return btnVisualizarNotificacoes;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarSenha;

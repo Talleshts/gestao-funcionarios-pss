@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Arthu
@@ -33,6 +35,7 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
         labelTituloNotificacao = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnMarcarComoLido = new javax.swing.JButton();
+        labelLido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +54,8 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
 
         btnMarcarComoLido.setText("Marcar como lido");
 
+        labelLido.setText("{lido/naolido}");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,12 +68,13 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnMarcarComoLido, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
-                                .addComponent(btnVoltar))))
+                                .addComponent(btnVoltar)))
+                        .addGap(38, 38, 38)
+                        .addComponent(labelLido))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,10 +88,15 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(labelTituloNotificacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnMarcarComoLido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnMarcarComoLido)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelLido)
+                        .addGap(22, 22, 22)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -133,12 +144,23 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnMarcarComoLido() {
+        return btnMarcarComoLido;
+    }
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMarcarComoLido;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelLido;
     private javax.swing.JLabel labelTituloNotificacao;
     private javax.swing.JTextArea txtCorpoNotificacao;
     // End of variables declaration//GEN-END:variables

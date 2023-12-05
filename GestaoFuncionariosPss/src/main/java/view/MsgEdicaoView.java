@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Arthu
@@ -35,7 +37,7 @@ public class MsgEdicaoView extends javax.swing.JFrame {
         txtMsgEdicao.setEditable(false);
         txtMsgEdicao.setColumns(20);
         txtMsgEdicao.setRows(5);
-        txtMsgEdicao.setText("Sua solicitação de cadastro foi enviada ao ADM\n\nAssim que o ADM confirmar seu cadastro, você\npoderá logar com suas credenciais.");
+        txtMsgEdicao.setText("O usuário {usuario.nome} foi editado com sucesso");
         jScrollPane1.setViewportView(txtMsgEdicao);
 
         btnOK.setText("OK");
@@ -107,6 +109,12 @@ public class MsgEdicaoView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnOK() {
+        return btnOK;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;

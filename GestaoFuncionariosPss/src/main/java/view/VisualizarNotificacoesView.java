@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 /**
  *
  * @author Arthu
@@ -178,6 +181,20 @@ public class VisualizarNotificacoesView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnLerNotificacao() {
+        return btnLerNotificacao;
+    }
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public JTable getTableNotificacoes() {
+        return tableNotificacoes;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLerNotificacao;

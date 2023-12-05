@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Arthu
@@ -11,7 +13,7 @@ package view;
 public class MsgNotificacaoView extends javax.swing.JFrame {
 
     /**
-     * Creates new form ConfirmacaoNotificacao
+     * Creates new form MsgNotificacaoView
      */
     public MsgNotificacaoView() {
         initComponents();
@@ -26,20 +28,19 @@ public class MsgNotificacaoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtMsgNotificacao = new javax.swing.JTextArea();
         btnOK = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtMsgExclusao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(367, 190));
-
-        txtMsgNotificacao.setEditable(false);
-        txtMsgNotificacao.setColumns(20);
-        txtMsgNotificacao.setRows(5);
-        txtMsgNotificacao.setText("A notificacao {notificacao.titulo}\nfoi enviada com sucesso");
-        jScrollPane1.setViewportView(txtMsgNotificacao);
 
         btnOK.setText("OK");
+
+        txtMsgExclusao.setEditable(false);
+        txtMsgExclusao.setColumns(20);
+        txtMsgExclusao.setRows(5);
+        txtMsgExclusao.setText("A notificacao {notificacao.titulo} foi enviada com sucesso");
+        jScrollPane1.setViewportView(txtMsgExclusao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,13 +94,6 @@ public class MsgNotificacaoView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MsgNotificacaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -109,9 +103,15 @@ public class MsgNotificacaoView extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnOK() {
+        return btnOK;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtMsgNotificacao;
+    private javax.swing.JTextArea txtMsgExclusao;
     // End of variables declaration//GEN-END:variables
 }

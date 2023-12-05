@@ -4,6 +4,10 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Arthu
@@ -199,6 +203,28 @@ public class AprovarSolicitacaoView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnAprovar() {
+        return btnAprovar;
+    }
+
+    public JButton getBtnNegar() {
+        return btnNegar;
+    }
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public JPasswordField getPassFieldSenha() {
+        return passFieldSenha;
+    }
+
+    public JTextField getTxtNomeUsuario() {
+        return txtNomeUsuario;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAprovar;

@@ -4,6 +4,11 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Arthu
@@ -223,6 +228,32 @@ public class ManterUsuariosView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnVisualizar() {
+        return btnVisualizar;
+    }
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public JList<String> getjList1() {
+        return jList1;
+    }
+
+    public JTable getTableManter() {
+        return tableManter;
+    }
+
+    public JTextField getTxtFiltro() {
+        return txtFiltro;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Arthu
@@ -35,7 +37,7 @@ public class MsgExclusaoView extends javax.swing.JFrame {
         txtMsgExclusao.setEditable(false);
         txtMsgExclusao.setColumns(20);
         txtMsgExclusao.setRows(5);
-        txtMsgExclusao.setText("Sua solicitação de cadastro foi enviada ao ADM\n\nAssim que o ADM confirmar seu cadastro, você\npoderá logar com suas credenciais.");
+        txtMsgExclusao.setText("O usuário {usuario.nome} foi excluído com sucesso");
         jScrollPane1.setViewportView(txtMsgExclusao);
 
         btnOK.setText("OK");
@@ -103,6 +105,12 @@ public class MsgExclusaoView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnOK() {
+        return btnOK;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;

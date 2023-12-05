@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 /**
  *
  * @author Arthu
@@ -182,6 +185,20 @@ public class VisualizarSolicitacoesView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnAbrirSolicitacao() {
+        return btnAbrirSolicitacao;
+    }
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public JTable getTableSolicitacoes() {
+        return tableSolicitacoes;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrirSolicitacao;

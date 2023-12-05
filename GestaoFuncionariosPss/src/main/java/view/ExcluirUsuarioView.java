@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Arthu
@@ -38,6 +40,7 @@ public class ExcluirUsuarioView extends javax.swing.JFrame {
         jLabel5.setText("Administrador");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(443, 300));
 
         btnSim.setText("SIM");
 
@@ -117,6 +120,16 @@ public class ExcluirUsuarioView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnNao() {
+        return btnNao;
+    }
+
+    public JButton getBtnSim() {
+        return btnSim;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNao;

@@ -4,6 +4,8 @@
 
 package com.ufes.gestaofuncionariospss;
 
+import presenter.*;
+
 /**
  *
  * @author tallesh
@@ -11,7 +13,9 @@ package com.ufes.gestaofuncionariospss;
 public class GestaoFuncionariosPss {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        LoginCadastroPresenter presenterLoginCadastro = new LoginCadastroPresenter();
+        
         //LoggerAdapter loggerAdapter = LoggerConfig.getLoggerAdapter();
     }
 }

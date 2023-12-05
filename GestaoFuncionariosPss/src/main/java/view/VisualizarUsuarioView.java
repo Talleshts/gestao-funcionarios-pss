@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Arthu
@@ -280,6 +282,18 @@ public class VisualizarUsuarioView extends javax.swing.JFrame {
                 new VisualizarUsuarioView().setVisible(true);
             }
         });
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public JButton getBtnExcluir() {
+        return btnExcluir;
+    }
+
+    public JButton getBtnVoltar2() {
+        return btnVoltar2;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

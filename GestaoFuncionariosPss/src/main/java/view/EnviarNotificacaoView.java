@@ -4,6 +4,12 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Arthu
@@ -199,6 +205,36 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnEnviar() {
+        return btnEnviar;
+    }
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public JList<String> getjList1() {
+        return jList1;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
+    public JList<String> getListUsuarios() {
+        return listUsuarios;
+    }
+
+    public JTextArea getTxtCorpoNotificacao() {
+        return txtCorpoNotificacao;
+    }
+
+    public JTextField getTxtTituloNotificacao() {
+        return txtTituloNotificacao;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;

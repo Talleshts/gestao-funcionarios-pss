@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Arthu
@@ -107,6 +109,12 @@ public class MsgSolicitacaoView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnOK() {
+        return btnOK;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;

@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Arthu
@@ -147,6 +150,20 @@ public class AlterarSenhaView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JButton getBtnSalvar() {
+        return btnSalvar;
+    }
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public JTextField getTxtNovaSenha() {
+        return txtNovaSenha;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;

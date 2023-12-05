@@ -47,9 +47,13 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnEnviarNotificacao" max="32767" attributes="0"/>
                   <Component id="btnManterUsuarios" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnVerSolicitacoes" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnVerSolicitacoes" min="-2" pref="142" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

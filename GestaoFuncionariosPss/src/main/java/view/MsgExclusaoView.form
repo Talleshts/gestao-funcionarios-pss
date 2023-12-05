@@ -60,7 +60,7 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Sua solicita&#xe7;&#xe3;o de cadastro foi enviada ao ADM&#xa;&#xa;Assim que o ADM confirmar seu cadastro, voc&#xea;&#xa;poder&#xe1; logar com suas credenciais."/>
+            <Property name="text" type="java.lang.String" value="O usu&#xe1;rio {usuario.nome} foi exclu&#xed;do com sucesso"/>
           </Properties>
         </Component>
       </SubComponents>
