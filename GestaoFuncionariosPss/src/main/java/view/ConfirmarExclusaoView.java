@@ -10,12 +10,12 @@ import javax.swing.JButton;
  *
  * @author Arthu
  */
-public class ExcluirUsuarioView extends javax.swing.JFrame {
+public class ConfirmarExclusaoView extends javax.swing.JFrame {
 
     /**
      * Creates new form ConfirmarExclusao
      */
-    public ExcluirUsuarioView() {
+    public ConfirmarExclusaoView() {
         initComponents();
     }
 
@@ -31,53 +31,51 @@ public class ExcluirUsuarioView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnSim = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtMsgExclusao = new javax.swing.JTextArea();
         btnNao = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtConfirmarExclusao = new javax.swing.JTextArea();
 
         jLabel4.setText("{usuario.nome}");
 
         jLabel5.setText("Administrador");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(443, 300));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnSim.setText("SIM");
 
-        btnNao.setText("NÃO");
+        txtMsgExclusao.setEditable(false);
+        txtMsgExclusao.setColumns(20);
+        txtMsgExclusao.setRows(5);
+        txtMsgExclusao.setText("Tem certeza que deseja excluir o usuário {usuario.nome}?");
+        jScrollPane1.setViewportView(txtMsgExclusao);
 
-        txtConfirmarExclusao.setEditable(false);
-        txtConfirmarExclusao.setColumns(20);
-        txtConfirmarExclusao.setRows(5);
-        txtConfirmarExclusao.setText("Você deseja excluir {usuario.nome}?");
-        jScrollPane3.setViewportView(txtConfirmarExclusao);
+        btnNao.setText("NÃO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSim)
-                        .addGap(67, 67, 67)
-                        .addComponent(btnNao)
-                        .addGap(151, 151, 151))))
+                .addGap(115, 115, 115)
+                .addComponent(btnSim)
+                .addGap(71, 71, 71)
+                .addComponent(btnNao)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSim)
                     .addComponent(btnNao))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,14 +98,18 @@ public class ExcluirUsuarioView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ExcluirUsuarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmarExclusaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ExcluirUsuarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmarExclusaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ExcluirUsuarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmarExclusaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ExcluirUsuarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmarExclusaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -116,7 +118,7 @@ public class ExcluirUsuarioView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ExcluirUsuarioView().setVisible(true);
+                new ConfirmarExclusaoView().setVisible(true);
             }
         });
     }
@@ -136,7 +138,7 @@ public class ExcluirUsuarioView extends javax.swing.JFrame {
     private javax.swing.JButton btnSim;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea txtConfirmarExclusao;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtMsgExclusao;
     // End of variables declaration//GEN-END:variables
 }

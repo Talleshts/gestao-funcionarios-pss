@@ -37,7 +37,7 @@ public class PrincipalAdministradorPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                ManterUsuariosPresenter presenterManterUsuarios = new ManterUsuariosPresenter();
+                ManterUsuariosPresenter presenterBuscarUsuarios = new ManterUsuariosPresenter();
                 
                 view.dispose();
             }

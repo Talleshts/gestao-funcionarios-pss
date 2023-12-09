@@ -10,12 +10,12 @@ import javax.swing.JButton;
  *
  * @author Arthu
  */
-public class MsgAlterarSenhaView extends javax.swing.JFrame {
+public class ConfirmarEdicaoView extends javax.swing.JFrame {
 
     /**
-     * Creates new form MensagemAlterarSenha
+     * Creates new form ConfirmarExclusao
      */
-    public MsgAlterarSenhaView() {
+    public ConfirmarEdicaoView() {
         initComponents();
     }
 
@@ -28,19 +28,28 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtMsgAlterarSenha = new javax.swing.JTextArea();
-        btnOK = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnSim = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtMsgExclusao = new javax.swing.JTextArea();
+        btnNao = new javax.swing.JButton();
+
+        jLabel4.setText("{usuario.nome}");
+
+        jLabel5.setText("Administrador");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        txtMsgAlterarSenha.setEditable(false);
-        txtMsgAlterarSenha.setColumns(20);
-        txtMsgAlterarSenha.setRows(5);
-        txtMsgAlterarSenha.setText("Senha alterada com sucesso");
-        jScrollPane3.setViewportView(txtMsgAlterarSenha);
+        btnSim.setText("SIM");
 
-        btnOK.setText("OK");
+        txtMsgExclusao.setEditable(false);
+        txtMsgExclusao.setColumns(20);
+        txtMsgExclusao.setRows(5);
+        txtMsgExclusao.setText("Tem certeza que deseja editar o usuário {usuario.nome}?");
+        jScrollPane1.setViewportView(txtMsgExclusao);
+
+        btnNao.setText("NÃO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,21 +57,25 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(btnOK)
+                .addGap(115, 115, 115)
+                .addComponent(btnSim)
+                .addGap(71, 71, 71)
+                .addComponent(btnNao)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnOK)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSim)
+                    .addComponent(btnNao))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -85,14 +98,26 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MsgAlterarSenhaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmarEdicaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MsgAlterarSenhaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmarEdicaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MsgAlterarSenhaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmarEdicaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MsgAlterarSenhaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConfirmarEdicaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -101,20 +126,27 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MsgAlterarSenhaView().setVisible(true);
+                new ConfirmarEdicaoView().setVisible(true);
             }
         });
     }
 
-    public JButton getBtnOK() {
-        return btnOK;
+    public JButton getBtnNao() {
+        return btnNao;
+    }
+
+    public JButton getBtnSim() {
+        return btnSim;
     }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOK;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea txtMsgAlterarSenha;
+    private javax.swing.JButton btnNao;
+    private javax.swing.JButton btnSim;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtMsgExclusao;
     // End of variables declaration//GEN-END:variables
 }

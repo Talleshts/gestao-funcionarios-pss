@@ -12,12 +12,12 @@ import view.*;
  *
  * @author Arthu
  */
-public class ExcluirUsuarioPresenter {
+public class ConfirmarEdicaoPresenter {
     
-    private ExcluirUsuarioView view;
+    private ConfirmarEdicaoView view;
     
-    public ExcluirUsuarioPresenter(){
-        view = new ExcluirUsuarioView();
+    public ConfirmarEdicaoPresenter(){
+        view = new ConfirmarEdicaoView();
         
         // Botão "Sim" [Navegação]
         view.getBtnSim().addActionListener(new ActionListener(){
@@ -25,8 +25,7 @@ public class ExcluirUsuarioPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                VisualizarUsuarioPresenter presenterVisualizarUsuario = new VisualizarUsuarioPresenter();
-                MsgExclusaoPresenter presenterMsgExclusaoPresenter = new MsgExclusaoPresenter();
+                MsgEdicaoPresenter presenterMsgEdicaoPresenter = new MsgEdicaoPresenter();
                 
                 view.dispose();
             }
@@ -38,7 +37,6 @@ public class ExcluirUsuarioPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                VisualizarUsuarioPresenter presenterVisualizarUsuario = new VisualizarUsuarioPresenter();
                 
                 view.dispose();
             }

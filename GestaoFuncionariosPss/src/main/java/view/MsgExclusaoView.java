@@ -32,7 +32,7 @@ public class MsgExclusaoView extends javax.swing.JFrame {
         txtMsgExclusao = new javax.swing.JTextArea();
         btnOK = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtMsgExclusao.setEditable(false);
         txtMsgExclusao.setColumns(20);

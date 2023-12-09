@@ -12,33 +12,31 @@ import view.*;
  *
  * @author Arthu
  */
-public class EditarUsuarioPresenter {
+public class ConfirmarExclusaoPresenter {
     
-    private EditarUsuarioView view;
+    private ConfirmarExclusaoView view;
     
-    public EditarUsuarioPresenter(){
-        view = new EditarUsuarioView();
+    public ConfirmarExclusaoPresenter(){
+        view = new ConfirmarExclusaoView();
         
-        // Botão "Salvar" [Navegação]
-        view.getBtnSalvar().addActionListener(new ActionListener(){
+        // Botão "Sim" [Navegação]
+        view.getBtnSim().addActionListener(new ActionListener(){
             
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                VisualizarUsuarioPresenter presenterVisualizarUsuario = new VisualizarUsuarioPresenter();
-                MsgEdicaoPresenter presenterMsgEdicao = new MsgEdicaoPresenter();
+                MsgExclusaoPresenter presenterMsgExclusaoPresenter = new MsgExclusaoPresenter();
                 
                 view.dispose();
             }
         });
         
-        // Botão "Voltar" [Navegação]
-        view.getBtnVoltar().addActionListener(new ActionListener(){
+        // Botão "Não" [Navegação]
+        view.getBtnNao().addActionListener(new ActionListener(){
             
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                VisualizarUsuarioPresenter presenterVisualizarUsuario = new VisualizarUsuarioPresenter();
                 
                 view.dispose();
             }
@@ -47,5 +45,4 @@ public class EditarUsuarioPresenter {
         view.setLocationRelativeTo(null);
         view.setVisible(true);
     }
-    
 }

@@ -10,12 +10,12 @@ import javax.swing.JButton;
  *
  * @author Arthu
  */
-public class MsgAlterarSenhaView extends javax.swing.JFrame {
+public class MsgInclusaoView extends javax.swing.JFrame {
 
     /**
-     * Creates new form MensagemAlterarSenha
+     * Creates new form MensagemExclusao
      */
-    public MsgAlterarSenhaView() {
+    public MsgInclusaoView() {
         initComponents();
     }
 
@@ -28,17 +28,17 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtMsgAlterarSenha = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtMsgExclusao = new javax.swing.JTextArea();
         btnOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        txtMsgAlterarSenha.setEditable(false);
-        txtMsgAlterarSenha.setColumns(20);
-        txtMsgAlterarSenha.setRows(5);
-        txtMsgAlterarSenha.setText("Senha alterada com sucesso");
-        jScrollPane3.setViewportView(txtMsgAlterarSenha);
+        txtMsgExclusao.setEditable(false);
+        txtMsgExclusao.setColumns(20);
+        txtMsgExclusao.setRows(5);
+        txtMsgExclusao.setText("O usuário {usuario.nome} foi criado com sucesso");
+        jScrollPane1.setViewportView(txtMsgExclusao);
 
         btnOK.setText("OK");
 
@@ -48,7 +48,7 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addGap(168, 168, 168)
@@ -59,10 +59,10 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnOK)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -85,14 +85,18 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MsgAlterarSenhaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MsgInclusaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MsgAlterarSenhaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MsgInclusaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MsgAlterarSenhaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MsgInclusaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MsgAlterarSenhaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MsgInclusaoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -101,7 +105,7 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MsgAlterarSenhaView().setVisible(true);
+                new MsgInclusaoView().setVisible(true);
             }
         });
     }
@@ -114,7 +118,7 @@ public class MsgAlterarSenhaView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea txtMsgAlterarSenha;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtMsgExclusao;
     // End of variables declaration//GEN-END:variables
 }

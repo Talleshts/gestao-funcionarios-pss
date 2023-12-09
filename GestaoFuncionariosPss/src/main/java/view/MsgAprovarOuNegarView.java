@@ -42,7 +42,7 @@ public class MsgAprovarOuNegarView extends javax.swing.JFrame {
 
         btnOK.setText("OK");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtMsgAprovarOuNegar.setEditable(false);
         txtMsgAprovarOuNegar.setColumns(20);

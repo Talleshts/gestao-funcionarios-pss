@@ -32,7 +32,7 @@ public class MsgSolicitacaoView extends javax.swing.JFrame {
         txtMsgSolicitacao = new javax.swing.JTextArea();
         btnOK = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtMsgSolicitacao.setEditable(false);
         txtMsgSolicitacao.setColumns(20);

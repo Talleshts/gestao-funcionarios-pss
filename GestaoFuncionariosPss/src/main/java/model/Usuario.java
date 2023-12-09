@@ -11,12 +11,23 @@ import java.util.Date;
  * @author Arthu
  */
 public class Usuario {
+    private final Long id;
     private String nomeUsuario;
     private String senha;
-    private Date dataCadastro;
+    private final Date dataCadastro;
     private int numNotificacoesEnviadas;
     private int numNotificacoesLidas;
-    private boolean administrador;
+    private boolean isAdministrador;
+    
+    public Usuario(Long id, String nomeUsuario, String senha, Date dataCadastro, boolean isAdministrador){
+        this.id = id;
+        this.nomeUsuario = nomeUsuario;
+        this.senha = senha;
+        this.dataCadastro = dataCadastro;
+        this.numNotificacoesEnviadas = 0;
+        this.numNotificacoesLidas = 0;
+        this.isAdministrador = isAdministrador;
+    }
     
     public String getNomeUsuario() {
         return nomeUsuario;
@@ -38,10 +49,6 @@ public class Usuario {
         return dataCadastro;
     }
 
-    public void setDataCadastro(Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
     public int getNumNotificacoesEnviadas() {
         return numNotificacoesEnviadas;
     }
@@ -59,11 +66,15 @@ public class Usuario {
     }
 
     public boolean isAdministrador() {
-        return administrador;
+        return isAdministrador;
     }
 
-    public void setAdministrador(boolean administrador) {
-        this.administrador = administrador;
+    public void setIsAdministrador(boolean isAdministrador) {
+        this.isAdministrador = isAdministrador;
+    }
+
+    public Long getId() {
+        return id;
     }
     
 }
