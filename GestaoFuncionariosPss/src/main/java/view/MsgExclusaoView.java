@@ -37,7 +37,7 @@ public class MsgExclusaoView extends javax.swing.JFrame {
         txtMsgExclusao.setEditable(false);
         txtMsgExclusao.setColumns(20);
         txtMsgExclusao.setRows(5);
-        txtMsgExclusao.setText("O usuário {usuario.nome} foi excluído com sucesso");
+        txtMsgExclusao.setText("O usuário visualizado foi excluído com sucesso");
         jScrollPane1.setViewportView(txtMsgExclusao);
 
         btnOK.setText("OK");

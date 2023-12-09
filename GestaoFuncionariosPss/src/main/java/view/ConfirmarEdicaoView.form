@@ -82,7 +82,7 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Tem certeza que deseja editar o usu&#xe1;rio {usuario.nome}?"/>
+            <Property name="text" type="java.lang.String" value="Tem certeza que deseja editar o &#xfa;ltimo usu&#xe1;rio visualizado?"/>
           </Properties>
         </Component>
       </SubComponents>

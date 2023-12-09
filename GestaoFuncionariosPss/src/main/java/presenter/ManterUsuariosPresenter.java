@@ -20,11 +20,13 @@ public class ManterUsuariosPresenter {
     
     private UsuarioCollection colecaoUsuarios;
     private ManterUsuariosView view;
+    JTable tableConsulta;
     
     public ManterUsuariosPresenter(){
         colecaoUsuarios = UsuarioCollection.getInstancia();
         view = new ManterUsuariosView();
         
+        tableConsulta = view.getTableManter();
         atualizarTabela();
         
         // Botão "Buscar"
@@ -55,7 +57,7 @@ public class ManterUsuariosPresenter {
             @Override
             // Ao clicar no botão, a busca deve ser feita (oh)
             public void actionPerformed(ActionEvent e){
-                //
+                verUsuario(tableConsulta);
             }
         });
         
@@ -77,7 +79,7 @@ public class ManterUsuariosPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                ConfirmarEdicaoPresenter presenterConfirmarEdicao = new ConfirmarEdicaoPresenter();
+                ConfirmarEdicaoPresenter presenterConfirmarEdicao = new ConfirmarEdicaoPresenter(ManterUsuariosPresenter.this);
             }
         });
         
@@ -87,7 +89,7 @@ public class ManterUsuariosPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                ConfirmarExclusaoPresenter presenterConfirmarExclusao = new ConfirmarExclusaoPresenter();
+                    ConfirmarExclusaoPresenter presenterConfirmarExclusao = new ConfirmarExclusaoPresenter(ManterUsuariosPresenter.this);
             }
         });
         
@@ -97,7 +99,7 @@ public class ManterUsuariosPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                // Limpa os campos
+                limparCampos();
             }
         });
         
@@ -107,10 +109,15 @@ public class ManterUsuariosPresenter {
         view.setVisible(true);
     }
     
+    // Update
+    public void update(){
+        atualizarTabela();
+        limparCampos();
+    }
+    
     // Atualizar a tabela com os dados dos usuários
     public void atualizarTabela() {
         
-        JTable tableConsulta = view.getTableManter();
         DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
         model.setRowCount(0); // Limpa todas as linhas da tabela
 
@@ -119,14 +126,47 @@ public class ManterUsuariosPresenter {
             // Adicione uma nova linha à tabela com os dados do usuário
             Object[] rowData = {
                 usuario.getNomeUsuario(),
-                usuario.getDataCadastro()
+                usuario.getDataCadastro(),
+                usuario.getId()
             };
             model.addRow(rowData);
         }
     }
     
+    public Usuario getSelecionado(JTable tableConsulta){
+        
+        DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
+        
+        // Obtendo o index da linha selecionada
+        int linhaSelecionado = tableConsulta.getSelectedRow();
+        String stringIdSelecionado = String.valueOf( model.getValueAt(linhaSelecionado, 2 ));
+        Long idSelecionado = Long.parseLong( stringIdSelecionado );
+        
+        System.out.println(idSelecionado);
+        
+        // Buscando na coleção
+        Usuario usuario = colecaoUsuarios.getUsuario( idSelecionado );
+        
+        return usuario;
+    }
+    
+    // Pega o usuário selecionado e mostra nos JTxtFields
+    private void verUsuario(JTable tableConsulta){
+        
+        Usuario usuario = getSelecionado(tableConsulta);
+        
+        // Exibindo nos JTxtFields
+        view.getTxtNomeUsuario().setText( usuario.getNomeUsuario() );
+        view.getTxtSenha().setText( usuario.getSenha() );
+        view.getTxtNotificacoesRecebidas().setText( String.valueOf( usuario.getNumNotificacoesEnviadas()) );
+        view.getTxtNotificacoesLidas().setText( String.valueOf( usuario.getNumNotificacoesLidas()) );
+        view.getTxtId().setText( String.valueOf( usuario.getId()) );
+        view.getTxtDataCadastro().setText( String.valueOf( usuario.getDataCadastro()) );
+    }
+    
     // Incluir usuário
     private void incluirUsuario(){
+        
         // Recupere os valores dos campos de entrada
         String nomeUsuario = view.getTxtNomeUsuario().getText();
         String senha = view.getTxtSenha().getText();
@@ -148,6 +188,37 @@ public class ManterUsuariosPresenter {
         limparCampos();
     }
     
+    public void editarUsuario(){
+        
+        try {
+            Long id = Long.parseLong(view.getTxtId().getText());
+            Usuario usuario = colecaoUsuarios.getUsuario(id);
+            
+            // Editando
+            usuario.setNomeUsuario( view.getTxtNomeUsuario().getText() );
+            usuario.setSenha( view.getTxtSenha().getText() );
+            usuario.setNumNotificacoesEnviadas(Integer.parseInt( view.getTxtNotificacoesRecebidas().getText() ));
+            usuario.setNumNotificacoesLidas(Integer.parseInt( view.getTxtNotificacoesLidas().getText() ));
+            
+        } catch (NumberFormatException ex) {
+            System.out.println("Um usuario deve ser visualizado nos campos de texto, antes de poder ser editado. Use o botão [Ver]");
+        }
+    }
+    
+    public void excluirUsuario(){
+        
+        try {
+            Long id = Long.parseLong(view.getTxtId().getText());
+            Usuario usuario = colecaoUsuarios.getUsuario( id );
+            
+            // Excluindo
+            colecaoUsuarios.removerUsuario(id);
+            
+        } catch (NumberFormatException ex) {
+            System.out.println("Um usuario deve ser visualizado nos campos de texto, antes de poder ser excluído. Use o botão [Ver]");
+        }
+    }
+    
     // Limpar campos
     private void limparCampos(){
         // Limpe os campos de entrada após a inclusão
@@ -155,5 +226,7 @@ public class ManterUsuariosPresenter {
         view.getTxtSenha().setText("");
         view.getTxtNotificacoesRecebidas().setText("");
         view.getTxtNotificacoesLidas().setText("");
+        view.getTxtId().setText("");
+        view.getTxtDataCadastro().setText("");
     }
 }

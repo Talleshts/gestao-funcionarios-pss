@@ -39,7 +39,7 @@ public class MsgNotificacaoView extends javax.swing.JFrame {
         txtMsgExclusao.setEditable(false);
         txtMsgExclusao.setColumns(20);
         txtMsgExclusao.setRows(5);
-        txtMsgExclusao.setText("A notificacao {notificacao.titulo} foi enviada com sucesso");
+        txtMsgExclusao.setText("Notificação enviada com sucesso");
         jScrollPane1.setViewportView(txtMsgExclusao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

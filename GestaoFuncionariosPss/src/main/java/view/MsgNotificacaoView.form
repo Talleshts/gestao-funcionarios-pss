@@ -65,7 +65,7 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="A notificacao {notificacao.titulo} foi enviada com sucesso"/>
+            <Property name="text" type="java.lang.String" value="Notifica&#xe7;&#xe3;o enviada com sucesso"/>
           </Properties>
         </Component>
       </SubComponents>

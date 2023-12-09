@@ -37,7 +37,7 @@ public class MsgEdicaoView extends javax.swing.JFrame {
         txtMsgEdicao.setEditable(false);
         txtMsgEdicao.setColumns(20);
         txtMsgEdicao.setRows(5);
-        txtMsgEdicao.setText("O usuário {usuario.nome} foi editado com sucesso");
+        txtMsgEdicao.setText("O usuário visualizado foi editado com sucesso");
         jScrollPane1.setViewportView(txtMsgEdicao);
 
         btnOK.setText("OK");

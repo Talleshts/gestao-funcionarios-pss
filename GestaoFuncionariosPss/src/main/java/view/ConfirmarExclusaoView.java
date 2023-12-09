@@ -46,7 +46,7 @@ public class ConfirmarExclusaoView extends javax.swing.JFrame {
         txtMsgExclusao.setEditable(false);
         txtMsgExclusao.setColumns(20);
         txtMsgExclusao.setRows(5);
-        txtMsgExclusao.setText("Tem certeza que deseja excluir o usuário {usuario.nome}?");
+        txtMsgExclusao.setText("Tem certeza que deseja excluir o último usuário visualizado?");
         jScrollPane1.setViewportView(txtMsgExclusao);
 
         btnNao.setText("NÃO");

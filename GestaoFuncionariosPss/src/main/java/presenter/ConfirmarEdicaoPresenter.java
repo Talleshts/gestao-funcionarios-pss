@@ -6,6 +6,8 @@ package presenter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JTable;
+import model.Usuario;
 import view.*;
 
 /**
@@ -16,7 +18,8 @@ public class ConfirmarEdicaoPresenter {
     
     private ConfirmarEdicaoView view;
     
-    public ConfirmarEdicaoPresenter(){
+    public ConfirmarEdicaoPresenter(ManterUsuariosPresenter presenterManterUsuarios){
+        
         view = new ConfirmarEdicaoView();
         
         // Botão "Sim" [Navegação]
@@ -25,7 +28,13 @@ public class ConfirmarEdicaoPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
+                
+                presenterManterUsuarios.editarUsuario();
+                
                 MsgEdicaoPresenter presenterMsgEdicaoPresenter = new MsgEdicaoPresenter();
+                
+                // Update em ManterUsuario (Observer?)
+                presenterManterUsuarios.update();
                 
                 view.dispose();
             }

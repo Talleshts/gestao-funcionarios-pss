@@ -16,7 +16,7 @@ public class ConfirmarExclusaoPresenter {
     
     private ConfirmarExclusaoView view;
     
-    public ConfirmarExclusaoPresenter(){
+    public ConfirmarExclusaoPresenter(ManterUsuariosPresenter presenterManterUsuarios){
         view = new ConfirmarExclusaoView();
         
         // Botão "Sim" [Navegação]
@@ -25,7 +25,13 @@ public class ConfirmarExclusaoPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
+                
+                presenterManterUsuarios.excluirUsuario();
+                
                 MsgExclusaoPresenter presenterMsgExclusaoPresenter = new MsgExclusaoPresenter();
+                
+                // Update em ManterUsuario (Observer?)
+                presenterManterUsuarios.update();
                 
                 view.dispose();
             }

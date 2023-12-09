@@ -16,7 +16,7 @@ public class UsuarioCollection {
     
     private ArrayList<Usuario> usuarios;
     
-    public static long proximoId = 1;
+    public static long proximoId = 0;
     
     private UsuarioCollection(){
         usuarios = new ArrayList<>();
@@ -44,13 +44,14 @@ public class UsuarioCollection {
         }
     }
     
-    public void listarUsuario(long id){
+    public Usuario getUsuario(long id){
         for(Usuario usuario : usuarios){
             if(usuario.getId() == id){
-                System.out.println(usuario.getNomeUsuario());
-                return;
+                return usuario;
             }
         }
+        
+        return null;
     }
     
     public void listarTudo(){

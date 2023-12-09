@@ -60,7 +60,7 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="O usu&#xe1;rio {usuario.nome} foi exclu&#xed;do com sucesso"/>
+            <Property name="text" type="java.lang.String" value="O usu&#xe1;rio visualizado foi exclu&#xed;do com sucesso"/>
           </Properties>
         </Component>
       </SubComponents>
