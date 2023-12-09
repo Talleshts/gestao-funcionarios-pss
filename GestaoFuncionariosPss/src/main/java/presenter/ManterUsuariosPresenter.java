@@ -89,7 +89,7 @@ public class ManterUsuariosPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                    ConfirmarExclusaoPresenter presenterConfirmarExclusao = new ConfirmarExclusaoPresenter(ManterUsuariosPresenter.this);
+                ConfirmarExclusaoPresenter presenterConfirmarExclusao = new ConfirmarExclusaoPresenter(ManterUsuariosPresenter.this);
             }
         });
         
@@ -122,7 +122,7 @@ public class ManterUsuariosPresenter {
         model.setRowCount(0); // Limpa todas as linhas da tabela
 
         for (Usuario usuario : colecaoUsuarios.getUsuarios()) {
-            System.out.println(usuario.getNomeUsuario());
+            
             // Adicione uma nova linha à tabela com os dados do usuário
             Object[] rowData = {
                 usuario.getNomeUsuario(),
@@ -190,33 +190,23 @@ public class ManterUsuariosPresenter {
     
     public void editarUsuario(){
         
-        try {
-            Long id = Long.parseLong(view.getTxtId().getText());
-            Usuario usuario = colecaoUsuarios.getUsuario(id);
-            
-            // Editando
-            usuario.setNomeUsuario( view.getTxtNomeUsuario().getText() );
-            usuario.setSenha( view.getTxtSenha().getText() );
-            usuario.setNumNotificacoesEnviadas(Integer.parseInt( view.getTxtNotificacoesRecebidas().getText() ));
-            usuario.setNumNotificacoesLidas(Integer.parseInt( view.getTxtNotificacoesLidas().getText() ));
-            
-        } catch (NumberFormatException ex) {
-            System.out.println("Um usuario deve ser visualizado nos campos de texto, antes de poder ser editado. Use o botão [Ver]");
-        }
+        Long id = Long.parseLong(view.getTxtId().getText());
+        Usuario usuario = colecaoUsuarios.getUsuario(id);
+
+        // Editando
+        usuario.setNomeUsuario( view.getTxtNomeUsuario().getText() );
+        usuario.setSenha( view.getTxtSenha().getText() );
+        usuario.setNumNotificacoesEnviadas(Integer.parseInt( view.getTxtNotificacoesRecebidas().getText() ));
+        usuario.setNumNotificacoesLidas(Integer.parseInt( view.getTxtNotificacoesLidas().getText() ));
     }
     
     public void excluirUsuario(){
         
-        try {
-            Long id = Long.parseLong(view.getTxtId().getText());
-            Usuario usuario = colecaoUsuarios.getUsuario( id );
-            
-            // Excluindo
-            colecaoUsuarios.removerUsuario(id);
-            
-        } catch (NumberFormatException ex) {
-            System.out.println("Um usuario deve ser visualizado nos campos de texto, antes de poder ser excluído. Use o botão [Ver]");
-        }
+        Long id = Long.parseLong(view.getTxtId().getText());
+        Usuario usuario = colecaoUsuarios.getUsuario( id );
+
+        // Excluindo
+        colecaoUsuarios.removerUsuario(id);
     }
     
     // Limpar campos

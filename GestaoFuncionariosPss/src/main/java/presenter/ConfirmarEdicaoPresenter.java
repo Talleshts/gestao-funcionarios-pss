@@ -29,14 +29,19 @@ public class ConfirmarEdicaoPresenter {
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
                 
-                presenterManterUsuarios.editarUsuario();
-                
-                MsgEdicaoPresenter presenterMsgEdicaoPresenter = new MsgEdicaoPresenter();
-                
-                // Update em ManterUsuario (Observer?)
-                presenterManterUsuarios.update();
-                
-                view.dispose();
+                try {
+                    presenterManterUsuarios.editarUsuario();
+                    MsgEdicaoPresenter presenterMsgEdicaoPresenter = new MsgEdicaoPresenter();
+
+                    // Update em ManterUsuario (Observer?)
+                    presenterManterUsuarios.update();
+
+                    view.dispose();
+                    
+                } catch (NumberFormatException ex) {
+                    System.out.println("Um usuario deve ser visualizado nos campos de texto, antes de poder ser editado. Use o botão [Ver]");
+                    view.dispose();
+                }
             }
         });
         

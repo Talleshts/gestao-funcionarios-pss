@@ -26,14 +26,19 @@ public class ConfirmarExclusaoPresenter {
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
                 
-                presenterManterUsuarios.excluirUsuario();
-                
-                MsgExclusaoPresenter presenterMsgExclusaoPresenter = new MsgExclusaoPresenter();
-                
-                // Update em ManterUsuario (Observer?)
-                presenterManterUsuarios.update();
-                
-                view.dispose();
+                try {
+                    presenterManterUsuarios.excluirUsuario();
+                    MsgExclusaoPresenter presenterMsgExclusaoPresenter = new MsgExclusaoPresenter();
+
+                    // Update em ManterUsuario (Observer?)
+                    presenterManterUsuarios.update();
+
+                    view.dispose();
+                    
+                } catch (NumberFormatException ex) {
+                    System.out.println("Um usuario deve ser visualizado nos campos de texto, antes de poder ser excluído. Use o botão [Ver]");
+                    view.dispose();
+                }
             }
         });
         
