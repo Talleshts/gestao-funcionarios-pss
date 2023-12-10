@@ -95,6 +95,7 @@ public class EnviarNotificacaoParaPresenter {
         // para a qual a notificação foi enviada
         for (Usuario usuario : selecionados) {
             novaNotificacao.getEnviadaPara().add(usuario.getId());
+            usuario.incrementarNumNotificacoesEnviadas();
         }
         
         colecaoNotificacoes.adicionarNotificacao(novaNotificacao);

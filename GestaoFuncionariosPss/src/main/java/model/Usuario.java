@@ -4,7 +4,6 @@
  */
 package model;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,7 +18,6 @@ public class Usuario {
     private int numNotificacoesEnviadas;
     private int numNotificacoesLidas;
     private boolean isAdministrador;
-    private ArrayList<Notificacao> notificacoes;
     
     public Usuario(Long id, String nomeUsuario, String senha, Date dataCadastro, boolean isAdministrador){
         this.id = id;
@@ -57,6 +55,10 @@ public class Usuario {
 
     public void setNumNotificacoesEnviadas(int numNotificacoesEnviadas) {
         this.numNotificacoesEnviadas = numNotificacoesEnviadas;
+    }
+    
+    public void incrementarNumNotificacoesEnviadas(){
+        this.numNotificacoesEnviadas++;
     }
 
     public int getNumNotificacoesLidas() {
