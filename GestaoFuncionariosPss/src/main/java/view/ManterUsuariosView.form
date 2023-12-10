@@ -212,9 +212,9 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="Campo 1"/>
-            <StringItem index="1" value="Campo 2"/>
-            <StringItem index="2" value="Campo 3"/>
+            <StringItem index="0" value="Nome"/>
+            <StringItem index="1" value="Data"/>
+            <StringItem index="2" value="Id"/>
           </StringArray>
         </Property>
       </Properties>
@@ -291,10 +291,19 @@
     <Component class="javax.swing.JTextField" name="txtNomeUsuario">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNotificacoesRecebidas">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNotificacoesRecebidasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSenha">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNotificacoesLidas">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

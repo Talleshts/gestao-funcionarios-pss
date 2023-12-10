@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -72,7 +73,7 @@ public class ManterUsuariosView extends javax.swing.JFrame {
 
         jLabel2.setText("Buscar por campo:");
 
-        comboBoxCampo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Campo 1", "Campo 2", "Campo 3" }));
+        comboBoxCampo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "Data", "Id" }));
 
         jLabel3.setText("Filtro escolhido");
 
@@ -111,6 +112,15 @@ public class ManterUsuariosView extends javax.swing.JFrame {
         jLabel15.setText("Notificações Lidas");
 
         jLabel16.setText("Senha");
+
+        txtNotificacoesRecebidas.setEditable(false);
+        txtNotificacoesRecebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNotificacoesRecebidasActionPerformed(evt);
+            }
+        });
+
+        txtNotificacoesLidas.setEditable(false);
 
         jLabel1.setText("id");
 
@@ -310,6 +320,10 @@ public class ManterUsuariosView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+    private void txtNotificacoesRecebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNotificacoesRecebidasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNotificacoesRecebidasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,6 +428,10 @@ public class ManterUsuariosView extends javax.swing.JFrame {
 
     public JTextField getTxtSenha() {
         return txtSenha;
+    }
+
+    public JComboBox<String> getComboBoxCampo() {
+        return comboBoxCampo;
     }
     
     
