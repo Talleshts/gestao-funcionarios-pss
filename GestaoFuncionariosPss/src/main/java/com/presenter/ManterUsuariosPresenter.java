@@ -211,7 +211,8 @@ public class ManterUsuariosPresenter {
         boolean isAdministrador = false;
 
         // Crie um novo usuario
-        Usuario novoUsuario = new Usuario(novoId, nomeUsuario, senha, dataCadastro, null, null, isAdministrador);
+        Usuario novoUsuario;
+        novoUsuario = new Usuario(novoId, nomeUsuario, senha, 0, 0, isAdministrador, dataCadastro);
         UsuarioCollection.proximoId++;
 
         // Adicione o novo usuario à coleção de usuarios
