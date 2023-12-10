@@ -54,12 +54,6 @@ public class UsuarioCollection {
         return null;
     }
     
-    public void listarTudo(){
-        for(Usuario usuario : usuarios){
-            System.out.println(usuario.getNomeUsuario());
-        }
-    }
-    
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }

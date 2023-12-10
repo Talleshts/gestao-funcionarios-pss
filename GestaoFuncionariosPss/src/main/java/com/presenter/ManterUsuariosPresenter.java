@@ -9,6 +9,7 @@ import com.model.UsuarioCollection;
 import com.model.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -36,7 +37,7 @@ public class ManterUsuariosPresenter {
             @Override
             // Ao clicar no botão, a busca deve ser feita (oh)
             public void actionPerformed(ActionEvent e){
-                // Adicionar tudo
+                buscarUsuario();
             }
         });
         
@@ -143,12 +144,44 @@ public class ManterUsuariosPresenter {
         String stringIdSelecionado = String.valueOf( model.getValueAt(linhaSelecionado, 2 ));
         Long idSelecionado = Long.parseLong( stringIdSelecionado );
         
-        System.out.println(idSelecionado);
-        
         // Buscando na coleção
         Usuario usuario = colecaoUsuarios.getUsuario( idSelecionado );
         
         return usuario;
+    }
+    
+    public void buscarUsuario(){
+        
+        DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
+        model.setRowCount(0); // Limpa todas as linhas da tabela
+        
+        String campo = view.getComboBoxCampo().getSelectedItem().toString();
+        String filtro = view.getTxtFiltro().getText();
+        
+        // Se o filtro estiver vazio, atualiza a tabela com todas as entradas e retorna
+        if (filtro.equals("")) {
+            atualizarTabela();
+            return;
+        }
+        
+        // Descobre o index da coluna que representa o campo que queremos
+        int coluna = model.findColumn(campo);
+
+        // Procura, em coluna == campo, o filtro
+        for (Usuario usuario : colecaoUsuarios.getUsuarios()) {
+            
+            
+            Object[] rowData = {
+                usuario.getNomeUsuario(),
+                usuario.getDataCadastro(),
+                usuario.getId()
+            };
+            
+            if(rowData[coluna].toString().equals(filtro)){
+                model.addRow(rowData);
+            }
+        }
+        
     }
     
     // Pega o usuário selecionado e mostra nos JTxtFields
@@ -171,8 +204,6 @@ public class ManterUsuariosPresenter {
         // Recupere os valores dos campos de entrada
         String nomeUsuario = view.getTxtNomeUsuario().getText();
         String senha = view.getTxtSenha().getText();
-        int numNotificacoesEnviadas = Integer.parseInt( view.getTxtNotificacoesRecebidas().getText() );
-        int numNotificacoesLidas = Integer.parseInt( view.getTxtNotificacoesLidas().getText() );
         
         // Inicializando valores independentes (id, data e booleano de adm)
         Long novoId = UsuarioCollection.getProximoId();
@@ -191,7 +222,7 @@ public class ManterUsuariosPresenter {
     
     public void editarUsuario(){
         
-        Long id = Long.parseLong(view.getTxtId().getText());
+        Long id = Long.valueOf(view.getTxtId().getText());
         Usuario usuario = colecaoUsuarios.getUsuario(id);
 
         // Editando

@@ -19,13 +19,16 @@ public class EnviarNotificacaoPresenter {
     public EnviarNotificacaoPresenter(){
         view = new EnviarNotificacaoView();
         
-        // Botão "Enviar" [Navegação]
-        view.getBtnEnviar().addActionListener(new ActionListener(){
+        // Botão "Enviar Para" [Navegação]
+        view.getBtnEnviarPara().addActionListener(new ActionListener(){
             
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                MsgNotificacaoPresenter presenterMsgNotificacao = new MsgNotificacaoPresenter();
+                String titulo = view.getTxtTituloNotificacao().getText();
+                String corpo = view.getTxtCorpoNotificacao().getText();
+                
+                EnviarNotificacaoParaPresenter presenterEnviarNotificacaoPara = new EnviarNotificacaoParaPresenter(titulo, corpo);
             }
         });
         

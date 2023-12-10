@@ -39,16 +39,13 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         labelTituloNotificacao = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
-        btnEnviar = new javax.swing.JButton();
+        btnEnviarPara = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtTituloNotificacao = new javax.swing.JTextField();
         labelTituloNotificacao1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtCorpoNotificacao = new javax.swing.JTextArea();
-        labelTituloNotificacao2 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        listUsuarios = new javax.swing.JList<>();
         jLabel6 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -75,31 +72,23 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
         jLabel3.setText("Editar Usuario");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(443, 300));
 
-        labelTituloNotificacao.setText("{notificacao.titulo}");
+        labelTituloNotificacao.setText("Título");
 
         btnVoltar.setText("Voltar");
 
-        btnEnviar.setText("Enviar");
+        btnEnviarPara.setText("Enviar Para:");
 
         jLabel4.setText("{usuario.nome}");
 
         jLabel5.setText("Administrador");
 
-        labelTituloNotificacao1.setText("{notificacao.corpo}");
+        labelTituloNotificacao1.setText("Corpo");
 
         txtCorpoNotificacao.setColumns(20);
         txtCorpoNotificacao.setRows(5);
         jScrollPane3.setViewportView(txtCorpoNotificacao);
-
-        labelTituloNotificacao2.setText("Enviar para...");
-
-        listUsuarios.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "{usuario1.nome}", "{usuario2.nome}", "{usuario3.nome}", "{usuario4.nome}", "{usuario5.nome}", "" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(listUsuarios);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel6.setText("Enviar Notificação");
@@ -109,62 +98,58 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel6)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelTituloNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTituloNotificacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTituloNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(labelTituloNotificacao2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelTituloNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 119, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelTituloNotificacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTituloNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(btnEnviar)
+                        .addGap(132, 132, 132)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(btnEnviarPara)
                         .addGap(14, 14, 14)
-                        .addComponent(btnVoltar)
-                        .addGap(18, 18, 18)))
-                .addContainerGap())
+                        .addComponent(btnVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(82, 82, 82))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTituloNotificacao)
-                    .addComponent(labelTituloNotificacao2))
+                .addComponent(labelTituloNotificacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnVoltar)
-                            .addComponent(btnEnviar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtTituloNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelTituloNotificacao1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(txtTituloNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(labelTituloNotificacao1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar)
+                    .addComponent(btnEnviarPara))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -206,8 +191,8 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
         });
     }
 
-    public JButton getBtnEnviar() {
-        return btnEnviar;
+    public JButton getBtnEnviarPara() {
+        return btnEnviarPara;
     }
 
     public JButton getBtnVoltar() {
@@ -222,10 +207,6 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
         return jTable1;
     }
 
-    public JList<String> getListUsuarios() {
-        return listUsuarios;
-    }
-
     public JTextArea getTxtCorpoNotificacao() {
         return txtCorpoNotificacao;
     }
@@ -237,7 +218,7 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnEnviarPara;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -247,12 +228,9 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelTituloNotificacao;
     private javax.swing.JLabel labelTituloNotificacao1;
-    private javax.swing.JLabel labelTituloNotificacao2;
-    private javax.swing.JList<String> listUsuarios;
     private javax.swing.JTextArea txtCorpoNotificacao;
     private javax.swing.JTextField txtTituloNotificacao;
     // End of variables declaration//GEN-END:variables

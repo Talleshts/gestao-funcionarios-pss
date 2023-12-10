@@ -4,6 +4,7 @@
  */
 package com.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,6 +19,7 @@ public class Usuario {
     private int numNotificacoesEnviadas;
     private int numNotificacoesLidas;
     private boolean isAdministrador;
+    private ArrayList<Notificacao> notificacoes;
     
     public Usuario(java.lang.Long id, String nomeUsuario, String senha, int numNotificacoesEnviadas, int numNotificacoesLidas, boolean isAdministrador, Date dataCadastro){
         this.id = id;
@@ -80,5 +82,4 @@ public class Usuario {
     public Long getId() {
         return id;
     }
-    
 }
