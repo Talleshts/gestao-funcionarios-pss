@@ -112,6 +112,32 @@ public class UsuarioDAO implements IDAO<Usuario> {
         execute(sql);
     }
     
+    public void criarTabelaUsuario() {
+        String sql = "CREATE TABLE  IF NOT EXISTS USUARIOS"
+                + "( ID INTEGER PRIMARY KEY AUTOINCREMENT"
+                + ", NOME_USUARIO VARCHAR(20)"
+                + ", SENHA VARCHAR(20)"
+                + ", DATA_CADASTRO VARCHAR(20))"
+                + ", NUM_NOTIFICACOES_ENVIADAS INTEGER"
+                + ", NUM_NOTIFICACOES_LIDAS INTEGER"
+                + ", IS_ADMINISTRADOR INTEGER";
+        execute(sql);
+    }
+
+    public void deletarTabelaUsuario() {
+        String sql = "DROP TABLE USUARIOS";
+        execute(sql);
+    }
+
+    /*
+    public static String turnUserToAdmin(Integer id) throws Exception {
+        String query = "UPDATE USUARIOS SET IS_ADMINISTRADOR = 1"
+                + "WHERE ID =" + id;
+        return query;
+//        statement.execute(query);
+    }
+*/
+    
     private void execute(String sql){
         try{
             statement.execute(sql);
