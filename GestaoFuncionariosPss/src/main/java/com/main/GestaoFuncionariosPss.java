@@ -4,6 +4,9 @@
 
 package com.main;
 
+import com.dao.NotificacaoDAO;
+import com.dao.SolicitacaoDAO;
+import com.dao.UsuarioDAO;
 import com.presenter.LoginCadastroPresenter;
 
 /**
@@ -15,7 +18,9 @@ public class GestaoFuncionariosPss {
     public static void main(String[] args) {
         
         LoginCadastroPresenter presenterLoginCadastro = new LoginCadastroPresenter();
-        
+        new UsuarioDAO().criarTabelaUsuario();        
+        new SolicitacaoDAO().criarTabelaSolicitacao();
+        new NotificacaoDAO().criarTabelaNotificao();
         //LoggerAdapter loggerAdapter = LoggerConfig.getLoggerAdapter();
     }
 }

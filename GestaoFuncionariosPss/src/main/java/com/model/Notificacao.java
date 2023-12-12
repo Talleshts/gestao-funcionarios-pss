@@ -15,15 +15,15 @@ public class Notificacao {
     private Long id;
     private String titulo;
     private String corpo;
-    private ArrayList<Long> enviadaPara;
-    private ArrayList<Long> lidaPor;
+    private Long enviadaPara;
+    private boolean ehLida;
 
     public Notificacao(Long id, String titulo, String corpo) {
         this.id = id;
         this.titulo = titulo;
         this.corpo = corpo;
-        this.enviadaPara = new ArrayList<>();
-        this.lidaPor = new ArrayList<>();
+        this.enviadaPara = enviadaPara;
+        this.ehLida = ehLida;
     }
 
     public Long getId() {
@@ -50,20 +50,20 @@ public class Notificacao {
         this.corpo = corpo;
     }
 
-    public ArrayList<Long> getEnviadaPara() {
+    public Long getEnviadaPara() {
         return enviadaPara;
     }
 
-    public void setEnviadaPara(ArrayList<Long> enviadaPara) {
+    public void setEnviadaPara(Long enviadaPara) {
         this.enviadaPara = enviadaPara;
     }
 
-    public ArrayList<Long> getLidaPor() {
-        return lidaPor;
+    public boolean getEhLida() {
+        return ehLida;
     }
 
-    public void setLidaPor(ArrayList<Long> lidaPor) {
-        this.lidaPor = lidaPor;
+    public void setEhLida (boolean ehLida) {
+        this.ehLida = ehLida;
     }
     
     

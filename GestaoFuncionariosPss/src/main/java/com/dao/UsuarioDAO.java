@@ -117,10 +117,10 @@ public class UsuarioDAO implements IDAO<Usuario> {
                 + "( ID INTEGER PRIMARY KEY AUTOINCREMENT"
                 + ", NOME_USUARIO VARCHAR(20)"
                 + ", SENHA VARCHAR(20)"
-                + ", DATA_CADASTRO VARCHAR(20))"
+                + ", DATA_CADASTRO VARCHAR(20)"
                 + ", NUM_NOTIFICACOES_ENVIADAS INTEGER"
                 + ", NUM_NOTIFICACOES_LIDAS INTEGER"
-                + ", IS_ADMINISTRADOR INTEGER";
+                + ", IS_ADMINISTRADOR INTEGER)";
         execute(sql);
     }
 
