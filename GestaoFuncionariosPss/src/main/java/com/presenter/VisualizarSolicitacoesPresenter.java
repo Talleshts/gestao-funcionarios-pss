@@ -4,6 +4,8 @@
  */
 package com.presenter;
 
+import com.model.SolicitacaoCollection;
+import com.observer.*;
 import com.view.VisualizarSolicitacoesView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,14 +14,18 @@ import java.awt.event.ActionListener;
  *
  * @author Arthu
  */
-public class VisualizarSolicitacoesPresenter {
+public class VisualizarSolicitacoesPresenter implements Observador {
     
+    private SolicitacaoCollection colecaoSolicitacoes;
     private VisualizarSolicitacoesView view;
     
     public VisualizarSolicitacoesPresenter(){
+        
+        colecaoSolicitacoes = SolicitacaoCollection.getInstancia();
+        colecaoSolicitacoes.adicionarObservador(this);
         view = new VisualizarSolicitacoesView();
         
-        // Botão "X" [Navegação]
+        // Botão "Abrir" [Navegação]
         view.getBtnAbrirSolicitacao().addActionListener(new ActionListener(){
             
             @Override
@@ -27,7 +33,7 @@ public class VisualizarSolicitacoesPresenter {
             public void actionPerformed(ActionEvent e){
                 AprovarSolicitacaoPresenter presenterAprovarSolicitacao = new AprovarSolicitacaoPresenter();
                 
-                view.dispose();
+                // view.dispose();
             }
         });
         
@@ -45,5 +51,14 @@ public class VisualizarSolicitacoesPresenter {
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    public void atualizarTabela(){
+        
+    }
+    
+    public void atualizar(Observavel observavel){
+        
+        atualizarTabela();
     }
 }

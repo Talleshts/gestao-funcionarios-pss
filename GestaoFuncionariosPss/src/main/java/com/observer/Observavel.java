@@ -14,6 +14,10 @@ public abstract class Observavel {
     
     private ArrayList<Observador> observadores;
     
+    public Observavel(){
+        observadores = new ArrayList<>();
+    }
+    
     public void adicionarObservador(Observador observador){
         observadores.add(observador);
     }

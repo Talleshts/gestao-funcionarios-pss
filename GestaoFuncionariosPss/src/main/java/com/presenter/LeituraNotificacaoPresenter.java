@@ -72,11 +72,11 @@ public class LeituraNotificacaoPresenter {
         
         // Se estiver não lida, marca como lida
         if(!usuarioNotificacao.isLido()){
-            usuarioNotificacao.setLido(true);
+            colecaoUsuarioNotificacao.marcarComoLida(idUsuario, idNotificacao);
         }
         // Se estiver lida, marca como não lida
         else{
-            usuarioNotificacao.setLido(false);
+            colecaoUsuarioNotificacao.marcarComoNaoLida(idUsuario, idNotificacao);
         }
         
         toggleLidoNaoLido(idNotificacao);

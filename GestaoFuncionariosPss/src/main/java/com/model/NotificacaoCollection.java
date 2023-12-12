@@ -4,6 +4,7 @@
  */
 package com.model;
 
+import com.observer.Observavel;
 import java.util.ArrayList;
 
 /**

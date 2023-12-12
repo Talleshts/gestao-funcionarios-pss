@@ -30,9 +30,6 @@ public class ConfirmarExclusaoPresenter {
                     presenterManterUsuarios.excluirUsuario();
                     MsgExclusaoPresenter presenterMsgExclusaoPresenter = new MsgExclusaoPresenter();
 
-                    // Update em ManterUsuario (Observer?)
-                    presenterManterUsuarios.update();
-
                     view.dispose();
                     
                 } catch (NumberFormatException ex) {

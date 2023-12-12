@@ -4,13 +4,14 @@
  */
 package com.model;
 
+import com.observer.Observavel;
 import java.util.ArrayList;
 
 /**
  *
  * @author Arthu
  */
-public class SolicitacaoCollection {
+public class SolicitacaoCollection extends Observavel {
     
     private static SolicitacaoCollection solicitacaoCollection;
     
@@ -19,6 +20,7 @@ public class SolicitacaoCollection {
     public static long proximoId = 1;
     
     private SolicitacaoCollection(){
+        super();
         solicitacoes = new ArrayList<>();
     }
     
@@ -32,6 +34,7 @@ public class SolicitacaoCollection {
     }
     
     public void adicionarSolicitacao(Solicitacao solicitacao){
+        this.notificarObservadores();
         solicitacoes.add(solicitacao);
     }
     
@@ -39,6 +42,7 @@ public class SolicitacaoCollection {
         for(Solicitacao solicitacao : solicitacoes){
             if(solicitacao.getId() == id){
                 solicitacoes.remove(solicitacao);
+                this.notificarObservadores();
                 return;
             }
         }

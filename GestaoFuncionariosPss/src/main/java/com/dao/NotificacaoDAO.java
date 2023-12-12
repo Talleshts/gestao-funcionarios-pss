@@ -84,8 +84,8 @@ public class NotificacaoDAO implements IDAO<Notificacao>{
     public void update(Notificacao notificacao) {
         String sql = "UPDATE NOTIFICACAO SET NOTIFICACAO.TITULO =" + notificacao.getTitulo()
                 + ", NOTIFICACAO.CORPO =" + notificacao.getCorpo()
-                + ", NOTIFICACAO.ENVIADA_PARA =" + notificacao.getEnviadaPara()
-                + ", NOTIFICACAO.EH_LIDA =" + notificacao.getEhLida()
+//                + ", NOTIFICACAO.ENVIADA_PARA =" + notificacao.getEnviadaPara()
+//                + ", NOTIFICACAO.EH_LIDA =" + notificacao.getEhLida()
                 + "WHERE NOTIFICACAO.ID = "+ notificacao.getId();
         execute(sql);
     }
@@ -98,8 +98,8 @@ public class NotificacaoDAO implements IDAO<Notificacao>{
 
     @Override
     public void insert(Notificacao notificacao) {
-        String sql = "INSERT INTO NOTIFICACAO ( TITULO, CORPO, ENVIADA_PARA, EH_LIDA) VALUES  ('" + notificacao.getTitulo() + "','" + notificacao.getCorpo()+ "','" + notificacao.getEnviadaPara() + "','" + notificacao.getEhLida() + "')";
-        execute(sql);
+//        String sql = "INSERT INTO NOTIFICACAO ( TITULO, CORPO, ENVIADA_PARA, EH_LIDA) VALUES  ('" + notificacao.getTitulo() + "','" + notificacao.getCorpo()+ "','" + notificacao.getEnviadaPara() + "','" + notificacao.getEhLida() + "')";
+//        execute(sql);
     }
     
     private void execute(String sql){

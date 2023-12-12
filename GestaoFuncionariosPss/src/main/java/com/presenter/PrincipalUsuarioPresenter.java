@@ -4,6 +4,9 @@
  */
 package com.presenter;
 
+import com.model.UsuarioNotificacaoCollection;
+import com.observer.Observador;
+import com.observer.Observavel;
 import com.view.PrincipalUsuarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,11 +15,15 @@ import java.awt.event.ActionListener;
  *
  * @author Arthu
  */
-public class PrincipalUsuarioPresenter {
+public class PrincipalUsuarioPresenter implements Observador {
     
+    private UsuarioNotificacaoCollection colecaoUsuarioNotificacao;
     private PrincipalUsuarioView view;
     
     public PrincipalUsuarioPresenter(){
+        
+        colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
+        colecaoUsuarioNotificacao.adicionarObservador(this);
         view = new PrincipalUsuarioView();
         
         // Botão "Alterar Senha" [Navegação]
@@ -27,7 +34,7 @@ public class PrincipalUsuarioPresenter {
             public void actionPerformed(ActionEvent e){
                 AlterarSenhaPresenter presenterAlterarSenha = new AlterarSenhaPresenter();
                 
-                view.dispose();
+                // view.dispose();
             }
         });
         
@@ -39,7 +46,7 @@ public class PrincipalUsuarioPresenter {
             public void actionPerformed(ActionEvent e){
                 VisualizarNotificacoesPresenter presenterVisualizarNotificacoes = new VisualizarNotificacoesPresenter();
                 
-                view.dispose();
+                // view.dispose();
             }
         });
         
@@ -67,5 +74,13 @@ public class PrincipalUsuarioPresenter {
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    public void atualizar(Observavel observavel){
+        
+        /*
+            Contexto útil: ArrayList<Solicitacao> (colecaoSolicitacoes.getNotificacoes())
+        */
+        
     }
 }

@@ -28,7 +28,7 @@ public class EnviarNotificacaoPresenter {
                 String titulo = view.getTxtTituloNotificacao().getText();
                 String corpo = view.getTxtCorpoNotificacao().getText();
                 
-                EnviarNotificacaoParaPresenter presenterEnviarNotificacaoPara = new EnviarNotificacaoParaPresenter(titulo, corpo);
+                EnviarNotificacaoParaPresenter presenterEnviarNotificacaoPara = new EnviarNotificacaoParaPresenter(EnviarNotificacaoPresenter.this, titulo, corpo);
             }
         });
         
@@ -46,5 +46,11 @@ public class EnviarNotificacaoPresenter {
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    public void limparCampos(){
+        
+        view.getTxtTituloNotificacao().setText("");
+        view.getTxtCorpoNotificacao().setText("");
     }
 }

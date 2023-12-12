@@ -4,6 +4,10 @@
  */
 package com.presenter;
 
+import com.model.SolicitacaoCollection;
+import com.model.UsuarioCollection;
+import com.observer.Observador;
+import com.observer.Observavel;
 import com.view.PrincipalAdministradorView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,11 +16,18 @@ import java.awt.event.ActionListener;
  *
  * @author Arthu
  */
-public class PrincipalAdministradorPresenter {
+public class PrincipalAdministradorPresenter implements Observador{
     
+    private UsuarioCollection colecaoUsuarios;
+    private SolicitacaoCollection colecaoSolicitacoes;
     private PrincipalAdministradorView view;
     
     public PrincipalAdministradorPresenter(){
+        
+        colecaoUsuarios = UsuarioCollection.getInstancia();
+        colecaoUsuarios.adicionarObservador(this);
+        colecaoSolicitacoes = SolicitacaoCollection.getInstancia();
+        colecaoSolicitacoes.adicionarObservador(this);
         view = new PrincipalAdministradorView();
         
         // Botão "Ver Solicitações" [Navegação]
@@ -27,7 +38,7 @@ public class PrincipalAdministradorPresenter {
             public void actionPerformed(ActionEvent e){
                 VisualizarSolicitacoesPresenter presenterVisualizarSolicitacoes = new VisualizarSolicitacoesPresenter();
                 
-                view.dispose();
+                // view.dispose();
             }
         });
         
@@ -39,7 +50,7 @@ public class PrincipalAdministradorPresenter {
             public void actionPerformed(ActionEvent e){
                 ManterUsuariosPresenter presenterBuscarUsuarios = new ManterUsuariosPresenter();
                 
-                view.dispose();
+                // view.dispose();
             }
         });
         
@@ -51,7 +62,7 @@ public class PrincipalAdministradorPresenter {
             public void actionPerformed(ActionEvent e){
                 EnviarNotificacaoPresenter presenterEnviarNotificacao = new EnviarNotificacaoPresenter();
                 
-                view.dispose();
+                // view.dispose();
             }
         });
         
@@ -79,5 +90,13 @@ public class PrincipalAdministradorPresenter {
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    public void atualizar(Observavel observavel){
+        
+        /*
+            Contexto útil: ArrayList<Solicitacao> (colecaoSolicitacoes.getNotificacoes())
+        */
+        
     }
 }

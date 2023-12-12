@@ -34,6 +34,8 @@ public class VisualizarNotificacoesPresenter implements Observador {
         colecaoNotificacoes = NotificacaoCollection.getInstancia();
         colecaoUsuarios = UsuarioCollection.getInstancia();
         colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
+        colecaoUsuarioNotificacao.adicionarObservador(this);
+        
         view = new VisualizarNotificacoesView();
         
         tableNotificacoesNaoLidas = view.getTableNotificacoesLidas();
@@ -141,9 +143,6 @@ public class VisualizarNotificacoesPresenter implements Observador {
     
     public void atualizar(Observavel observavel){
         
-        /*
-            Contexto útil: ArrayList<Notificacao> (colecaoNotificacoes.getNotificacoes())
-        */
-        
+        atualizarTabelas();
     }
 }

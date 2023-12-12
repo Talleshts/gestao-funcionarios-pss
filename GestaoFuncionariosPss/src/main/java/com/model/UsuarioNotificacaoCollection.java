@@ -20,6 +20,7 @@ public class UsuarioNotificacaoCollection extends Observavel {
     public static long proximoId = 1;
     
     private UsuarioNotificacaoCollection(){
+        super();
         usuarioNotificacoes = new ArrayList<>();
     }
     
@@ -34,12 +35,14 @@ public class UsuarioNotificacaoCollection extends Observavel {
     
     public void adicionarUsuarioNotificacao(UsuarioNotificacao usuarioNotificacao){
         usuarioNotificacoes.add(usuarioNotificacao);
+        this.notificarObservadores();
     }
     
     public void removerUsuarioNotificacao(Long idUsuario, Long idNotificacao){
         for(UsuarioNotificacao usuarioNotificacao : usuarioNotificacoes){
             if(usuarioNotificacao.getIdUsuario() == idUsuario && usuarioNotificacao.getIdNotificacao() == idNotificacao){
                 usuarioNotificacoes.remove(usuarioNotificacao);
+                this.notificarObservadores();
                 return;
             }
         }
@@ -63,7 +66,7 @@ public class UsuarioNotificacaoCollection extends Observavel {
         return proximoId;
     }
     
-    public boolean foiEnviadaPara(Long idNotificacao, Long idUsuario){
+    public boolean foiEnviadaPara(Long idUsuario, Long idNotificacao){
         
         for(UsuarioNotificacao par : usuarioNotificacoes){
             if(par.getIdNotificacao() == idNotificacao && par.getIdUsuario() == idUsuario){
@@ -74,7 +77,7 @@ public class UsuarioNotificacaoCollection extends Observavel {
         return false;
     }
     
-    public boolean foiLidaPor(Long idNotificacao, Long idUsuario){
+    public boolean foiLidaPor(Long idUsuario, Long idNotificacao){
         
         for(UsuarioNotificacao par : usuarioNotificacoes){
             if(par.getIdNotificacao() == idNotificacao && par.getIdUsuario() == idUsuario && par.isLido()){
@@ -83,5 +86,25 @@ public class UsuarioNotificacaoCollection extends Observavel {
         }
         
         return false;
+    }
+    
+    public void marcarComoLida(Long idUsuario, Long idNotificacao){
+        
+        for(UsuarioNotificacao par : usuarioNotificacoes){
+            if(par.getIdNotificacao() == idNotificacao && par.getIdUsuario() == idUsuario){
+                par.setLido(true);
+                this.notificarObservadores();
+            }
+        }
+    }
+    
+    public void marcarComoNaoLida(Long idUsuario, Long idNotificacao){
+        
+        for(UsuarioNotificacao par : usuarioNotificacoes){
+            if(par.getIdNotificacao() == idNotificacao && par.getIdUsuario() == idUsuario){
+                par.setLido(false);
+                this.notificarObservadores();
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@
  */
 package com.presenter;
 
+import com.model.*;
 import com.view.LoginCadastroView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,11 @@ public class LoginCadastroPresenter {
     private LoginCadastroView view;
     
     public LoginCadastroPresenter(){
+        
+        UsuarioNotificacaoCollection colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
+        NotificacaoCollection colecaoNotificacoes = NotificacaoCollection.getInstancia();
+        UsuarioCollection colecaoUsuarios = UsuarioCollection.getInstancia();
+        
         view = new LoginCadastroView();
         
         // Botão "Login" [Navegação]

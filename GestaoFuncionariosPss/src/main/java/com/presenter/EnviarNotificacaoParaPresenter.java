@@ -22,14 +22,13 @@ public class EnviarNotificacaoParaPresenter implements Observador {
     private EnviarNotificacaoParaView view;
     private NotificacaoCollection colecaoNotificacoes;
     private UsuarioCollection colecaoUsuarios;
-    private UsuarioNotificacaoCollection colecaoUsuarioNotificacao;
     JTable tableConsulta;
     
-    public EnviarNotificacaoParaPresenter(String titulo, String corpo){
+    public EnviarNotificacaoParaPresenter(EnviarNotificacaoPresenter presenterEnviarNotificacao, String titulo, String corpo){
         
         colecaoNotificacoes = NotificacaoCollection.getInstancia();
         colecaoUsuarios = UsuarioCollection.getInstancia();
-        colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
+        colecaoUsuarios.adicionarObservador(this);
         view = new EnviarNotificacaoParaView();
         
         tableConsulta = view.getTableEnviarPara();
@@ -55,9 +54,9 @@ public class EnviarNotificacaoParaPresenter implements Observador {
 //                        System.out.println("Enviada para: " + id);
 //                    }
 //                }
-                
-                EnviarNotificacaoPresenter presenterEnviarNotificacao = new EnviarNotificacaoPresenter();
-                view.dispose();
+
+                presenterEnviarNotificacao.limparCampos();
+                // view.dispose();
                 
                 MsgNotificacaoPresenter presenterMsgNotificacao = new MsgNotificacaoPresenter();
             }
@@ -144,9 +143,6 @@ public class EnviarNotificacaoParaPresenter implements Observador {
     
     public void atualizar(Observavel observavel){
         
-        /*
-            Contexto útil: ArrayList<Usuario> (colecaoUsuarios.getUsuarios())
-        */
-        
+        atualizarTabela();
     }
 }

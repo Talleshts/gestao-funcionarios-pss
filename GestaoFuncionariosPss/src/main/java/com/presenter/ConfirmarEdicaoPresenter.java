@@ -33,9 +33,6 @@ public class ConfirmarEdicaoPresenter {
                     presenterManterUsuarios.editarUsuario();
                     MsgEdicaoPresenter presenterMsgEdicaoPresenter = new MsgEdicaoPresenter();
 
-                    // Update em ManterUsuario (Observer?)
-                    presenterManterUsuarios.update();
-
                     view.dispose();
                     
                 } catch (NumberFormatException ex) {

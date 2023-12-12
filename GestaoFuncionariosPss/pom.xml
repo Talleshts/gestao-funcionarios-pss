@@ -25,11 +25,11 @@
             <type>jar</type>
         </dependency>
         
-        <dependency>
+<!--        <dependency>
             <groupId>com</groupId>
             <artifactId>SistemaLogger</artifactId>
             <version>1.0</version>
-        </dependency>
+        </dependency>-->
         
         <dependency>
             <groupId>org.xerial</groupId>

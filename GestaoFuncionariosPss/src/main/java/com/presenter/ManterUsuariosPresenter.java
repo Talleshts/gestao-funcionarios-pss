@@ -7,6 +7,7 @@ package com.presenter;
 import com.view.ManterUsuariosView;
 import com.model.UsuarioCollection;
 import com.model.Usuario;
+import com.observer.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Arthu
  */
-public class ManterUsuariosPresenter {
+public class ManterUsuariosPresenter implements Observador{
     
     private UsuarioCollection colecaoUsuarios;
     private ManterUsuariosView view;
@@ -26,6 +27,7 @@ public class ManterUsuariosPresenter {
     
     public ManterUsuariosPresenter(){
         colecaoUsuarios = UsuarioCollection.getInstancia();
+        colecaoUsuarios.adicionarObservador(this);
         view = new ManterUsuariosView();
         
         tableConsulta = view.getTableManter();
@@ -109,12 +111,6 @@ public class ManterUsuariosPresenter {
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
-    }
-    
-    // Update
-    public void update(){
-        atualizarTabela();
-        limparCampos();
     }
     
     // Atualizar a tabela com os dados dos usuários
@@ -251,5 +247,10 @@ public class ManterUsuariosPresenter {
         view.getTxtNotificacoesLidas().setText("");
         view.getTxtId().setText("");
         view.getTxtDataCadastro().setText("");
+    }
+    
+    public void atualizar(Observavel observavel){
+        
+        atualizarTabela();
     }
 }
