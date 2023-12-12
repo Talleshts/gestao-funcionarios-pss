@@ -5,6 +5,7 @@
 package com.view;
 
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -122,6 +123,10 @@ public class MsgAprovarOuNegarView extends javax.swing.JFrame {
 
     public JButton getBtnOK2() {
         return btnOK2;
+    }
+
+    public JTextArea getTxtMsgAprovarOuNegar() {
+        return txtMsgAprovarOuNegar;
     }
     
     

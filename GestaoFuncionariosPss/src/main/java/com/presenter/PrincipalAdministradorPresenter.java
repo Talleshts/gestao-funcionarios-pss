@@ -9,8 +9,10 @@ import com.model.UsuarioCollection;
 import com.observer.Observador;
 import com.observer.Observavel;
 import com.view.PrincipalAdministradorView;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
 /**
  *
@@ -82,14 +84,26 @@ public class PrincipalAdministradorPresenter implements Observador{
             @Override
             // Ao clicar no botão, abrimos a tela de LoginCadastro
             public void actionPerformed(ActionEvent e){
+                fecharTudo();
                 LoginCadastroPresenter presenterLoginCadastro = new LoginCadastroPresenter();
                 
-                view.dispose();
+                //view.dispose();
             }
         });
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    private void fecharTudo() {
+        
+        Window[] windows = Window.getWindows();
+        for (Window window : windows) {
+            
+            if (window instanceof JFrame) {
+                window.dispose();
+            }
+        }
     }
     
     public void atualizar(Observavel observavel){

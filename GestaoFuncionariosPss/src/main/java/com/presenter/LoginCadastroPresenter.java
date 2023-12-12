@@ -8,6 +8,7 @@ import com.model.*;
 import com.view.LoginCadastroView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  *
@@ -15,29 +16,31 @@ import java.awt.event.ActionListener;
  */
 public class LoginCadastroPresenter {
     
+    private UsuarioNotificacaoCollection colecaoUsuarioNotificacao;
+    private NotificacaoCollection colecaoNotificacoes;
+    private SolicitacaoCollection colecaoSolicitacoes;
+    private UsuarioCollection colecaoUsuarios;
     private LoginCadastroView view;
     
     public LoginCadastroPresenter(){
         
-        UsuarioNotificacaoCollection colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
-        NotificacaoCollection colecaoNotificacoes = NotificacaoCollection.getInstancia();
-        UsuarioCollection colecaoUsuarios = UsuarioCollection.getInstancia();
+        colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
+        colecaoNotificacoes = NotificacaoCollection.getInstancia();
+        colecaoSolicitacoes = SolicitacaoCollection.getInstancia();
+        colecaoUsuarios = UsuarioCollection.getInstancia();
         
         view = new LoginCadastroView();
         
         // Botão "Login" [Navegação]
-        // NA REAL ELE PODE IR PRA UMA DENTRE DUAS TELAS. Por enquanto vamos
-        // nos restringir a decidir só uma dessas telas de forma estática.
-        // Só pra testar.
         view.getBtnLogin().addActionListener(new ActionListener(){
             
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                // PrincipalUsuarioPresenter presenterPrincipalUsuario = new PrincipalUsuarioPresenter();
+                PrincipalUsuarioPresenter presenterPrincipalUsuario = new PrincipalUsuarioPresenter();
                 PrincipalAdministradorPresenter presenterAdministradorUsuario = new PrincipalAdministradorPresenter();
                 
-                view.dispose();
+                // view.dispose();
             }
         });
         
@@ -47,11 +50,39 @@ public class LoginCadastroPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
+                adicionaSolicitacao();
                 MsgSolicitacaoPresenter presenterMsgSolicitacao = new MsgSolicitacaoPresenter();
             }
         });
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    public void adicionaSolicitacao(){
+                
+        // Recupere os valores dos campos de entrada
+        String nomeUsuario = view.getTxtNomeUsuario().getText();
+        String senha = view.getPassFieldSenha().getText();
+        
+        // Inicializando id
+        Long novoId = SolicitacaoCollection.getProximoId();
+
+        // Crie uma nova Solicitação
+        Solicitacao novaSolicitacao;
+        novaSolicitacao = new Solicitacao(novoId, nomeUsuario, senha);
+        SolicitacaoCollection.proximoId++;
+
+        // Adicione a nova solicitação à coleção de solicitações
+        colecaoSolicitacoes.adicionarSolicitacao(novaSolicitacao);
+
+        limparCampos();
+    }
+    
+    
+    private void limparCampos(){
+        // Limpe os campos de entrada após a inclusão
+        view.getTxtNomeUsuario().setText("");
+        view.getPassFieldSenha().setText("");
     }
 }

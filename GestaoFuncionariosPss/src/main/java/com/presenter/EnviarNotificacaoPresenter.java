@@ -38,7 +38,6 @@ public class EnviarNotificacaoPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                PrincipalAdministradorPresenter presenterPrincipalAdministrador = new PrincipalAdministradorPresenter();
                 
                 view.dispose();
             }

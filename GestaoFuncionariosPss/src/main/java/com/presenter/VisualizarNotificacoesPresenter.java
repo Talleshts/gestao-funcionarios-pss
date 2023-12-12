@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,7 +69,6 @@ public class VisualizarNotificacoesPresenter implements Observador {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                PrincipalUsuarioPresenter presenterPrincipalUsuario = new PrincipalUsuarioPresenter();
                 
                 view.dispose();
             }
@@ -81,36 +81,44 @@ public class VisualizarNotificacoesPresenter implements Observador {
     // Atualizar a tabela com os títulos das notificações
     public void atualizarTabelas() {
         
-        DefaultTableModel modelNaoLidas = (DefaultTableModel) tableNotificacoesNaoLidas.getModel();
-        modelNaoLidas.setRowCount(0); // Limpa todas as linhas da tabela
-        
-        DefaultTableModel modelLidas = (DefaultTableModel) tableNotificacoesLidas.getModel();
-        modelLidas.setRowCount(0); // Limpa todas as linhas da tabela
-        
-        // Percorre a lista de link usuario-notificação
-        for (UsuarioNotificacao usuarioNotificacao : colecaoUsuarioNotificacao.getUsuarioNotificacoes()){
-            
-            // Se há uma instância com o mesmo idUsuario que o login da presenter, e a notificação não foi lda...
-            if(Objects.equals(usuarioNotificacao.getIdUsuario(), idUsuario) && !usuarioNotificacao.isLido()){
-                Notificacao notificacao = colecaoNotificacoes.getNotificacao(usuarioNotificacao.getIdNotificacao());
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
                 
-                Object[] rowData = {
-                    notificacao.getTitulo()
-                };
-                
-                modelNaoLidas.addRow(rowData);
+                DefaultTableModel modelNaoLidas = (DefaultTableModel) tableNotificacoesNaoLidas.getModel();
+                modelNaoLidas.setRowCount(0); // Limpa todas as linhas da tabela
+
+                DefaultTableModel modelLidas = (DefaultTableModel) tableNotificacoesLidas.getModel();
+                modelLidas.setRowCount(0); // Limpa todas as linhas da tabela
+
+                // Percorre a lista de link usuario-notificação
+                for (UsuarioNotificacao usuarioNotificacao : colecaoUsuarioNotificacao.getUsuarioNotificacoes()){
+
+                    // Se há uma instância com o mesmo idUsuario que o login da presenter, e a notificação não foi lda...
+                    if(Objects.equals(usuarioNotificacao.getIdUsuario(), idUsuario) && !usuarioNotificacao.isLido()){
+                        Notificacao notificacao = colecaoNotificacoes.getNotificacao(usuarioNotificacao.getIdNotificacao());
+
+                        Object[] rowData = {
+                            notificacao.getTitulo()
+                        };
+
+                        modelNaoLidas.addRow(rowData);
+                    }
+                    // Se há uma instância com o mesmo idUsuario que o login da presenter, e a notificação foi lda...
+                    else if(Objects.equals(usuarioNotificacao.getIdUsuario(), idUsuario) && usuarioNotificacao.isLido()){
+                        Notificacao notificacao = colecaoNotificacoes.getNotificacao(usuarioNotificacao.getIdNotificacao());
+
+                        Object[] rowData = {
+                            notificacao.getTitulo()
+                        };
+
+                        modelLidas.addRow(rowData);
+                    }
+                }
+
+                modelNaoLidas.fireTableDataChanged();
             }
-            // Se há uma instância com o mesmo idUsuario que o login da presenter, e a notificação foi lda...
-            else if(Objects.equals(usuarioNotificacao.getIdUsuario(), idUsuario) && usuarioNotificacao.isLido()){
-                Notificacao notificacao = colecaoNotificacoes.getNotificacao(usuarioNotificacao.getIdNotificacao());
-                
-                Object[] rowData = {
-                    notificacao.getTitulo()
-                };
-                
-                modelLidas.addRow(rowData);
-            }
-        }
+        });
     }
     
     public Notificacao getNotificacaoSelecionada(JTable tableSelecionada){

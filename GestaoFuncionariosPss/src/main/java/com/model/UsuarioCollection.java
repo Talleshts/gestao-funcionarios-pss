@@ -47,6 +47,19 @@ public class UsuarioCollection extends Observavel {
             }
         }
     }
+   
+    public void editarUsuario(Long id, String nome, String senha, int numNotEnviadas, int numNotLidas){
+        
+        Usuario usuario = getUsuario(id);
+
+        // Editando
+        usuario.setNomeUsuario(nome);
+        usuario.setSenha(senha);
+        usuario.setNumNotificacoesEnviadas(numNotEnviadas);
+        usuario.setNumNotificacoesLidas(numNotLidas);
+        
+        this.notificarObservadores();
+    }
     
     public Usuario getUsuario(long id){
         for(Usuario usuario : usuarios){

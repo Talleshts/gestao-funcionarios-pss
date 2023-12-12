@@ -16,8 +16,15 @@ public class MsgAprovarOuNegarPresenter {
     
     private MsgAprovarOuNegarView view;
     
-    public MsgAprovarOuNegarPresenter(){
+    public MsgAprovarOuNegarPresenter(boolean aprovado){
         view = new MsgAprovarOuNegarView();
+        
+        if(aprovado){
+            view.getTxtMsgAprovarOuNegar().setText("A solicitcao foi aprovada com sucesso");
+        }
+        else{
+            view.getTxtMsgAprovarOuNegar().setText("A solicitcao foi negada com sucesso");
+        }
         
         // Botão "OK2" [Navegação]
         view.getBtnOK2().addActionListener(new ActionListener(){

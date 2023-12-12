@@ -14,8 +14,10 @@ public class Solicitacao {
     private String nome;
     private String senha;
 
-    public Solicitacao(long aLong, String string, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Solicitacao(long id, String nome, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.senha = senha;
     }
 
     public String getNome() {

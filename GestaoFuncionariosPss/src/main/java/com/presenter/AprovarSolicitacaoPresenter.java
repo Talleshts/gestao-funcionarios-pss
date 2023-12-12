@@ -4,9 +4,14 @@
  */
 package com.presenter;
 
+import com.model.Solicitacao;
+import com.model.SolicitacaoCollection;
+import com.model.Usuario;
+import com.model.UsuarioCollection;
 import com.view.AprovarSolicitacaoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  *
@@ -14,10 +19,18 @@ import java.awt.event.ActionListener;
  */
 public class AprovarSolicitacaoPresenter {
     
+    private UsuarioCollection colecaoUsuarios;
+    private SolicitacaoCollection colecaoSolicitacoes;
     private AprovarSolicitacaoView view;
     
-    public AprovarSolicitacaoPresenter(){
+    public AprovarSolicitacaoPresenter(Solicitacao solicitacao){
+        
+        colecaoUsuarios = UsuarioCollection.getInstancia();
+        colecaoSolicitacoes = SolicitacaoCollection.getInstancia();
         view = new AprovarSolicitacaoView();
+        
+        view.getTxtNome().setText(solicitacao.getNome());
+        view.getTxtSenha().setText(solicitacao.getSenha());
         
         // Botão "Aprovar" [Navegação]
         view.getBtnAprovar().addActionListener(new ActionListener(){
@@ -25,7 +38,10 @@ public class AprovarSolicitacaoPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                MsgAprovarOuNegarPresenter presenterMsgAprovarOuNegar = new MsgAprovarOuNegarPresenter();
+                aprovarSolicitacao(solicitacao);
+                MsgAprovarOuNegarPresenter presenterMsgAprovarOuNegar = new MsgAprovarOuNegarPresenter(true);
+                
+                view.dispose();
             }
         });
         
@@ -35,7 +51,10 @@ public class AprovarSolicitacaoPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                MsgAprovarOuNegarPresenter presenterMsgAprovarOuNegar = new MsgAprovarOuNegarPresenter();
+                negarSolicitacao(solicitacao);
+                MsgAprovarOuNegarPresenter presenterMsgAprovarOuNegar = new MsgAprovarOuNegarPresenter(false);
+                
+                view.dispose();
             }
         });
         
@@ -45,7 +64,6 @@ public class AprovarSolicitacaoPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                VisualizarSolicitacoesPresenter presenterVisualizarSolicitacoes = new VisualizarSolicitacoesPresenter();
                 
                 view.dispose();
             }
@@ -53,6 +71,31 @@ public class AprovarSolicitacaoPresenter {
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    public void aprovarSolicitacao(Solicitacao solicitacao){
+        
+        String nomeUsuario = view.getTxtNome().getText();
+        String senha = view.getTxtSenha().getText();
+        
+        // Inicializando valores independentes (id, data e booleano de adm)
+        Long novoId = UsuarioCollection.getProximoId();
+        Date dataCadastro = new java.sql.Date( System.currentTimeMillis() );
+        boolean isAdministrador = false;
+        
+        // Crie um novo usuario
+        Usuario novoUsuario;
+        novoUsuario = new Usuario(novoId, nomeUsuario, senha, 0, 0, isAdministrador, dataCadastro);
+        UsuarioCollection.proximoId++;
+        
+        // Adicione o novo usuario à coleção de usuarios
+        colecaoUsuarios.adicionarUsuario(novoUsuario);
+        colecaoSolicitacoes.removerSolicitacao(solicitacao.getId());
+    }
+    
+    public void negarSolicitacao(Solicitacao solicitacao){
+        
+        colecaoSolicitacoes.removerSolicitacao(solicitacao.getId());
     }
     
 }

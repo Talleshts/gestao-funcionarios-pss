@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,14 +24,14 @@ public class ManterUsuariosPresenter implements Observador{
     
     private UsuarioCollection colecaoUsuarios;
     private ManterUsuariosView view;
-    JTable tableConsulta;
+    JTable tableManter;
     
     public ManterUsuariosPresenter(){
         colecaoUsuarios = UsuarioCollection.getInstancia();
         colecaoUsuarios.adicionarObservador(this);
         view = new ManterUsuariosView();
         
-        tableConsulta = view.getTableManter();
+        tableManter = view.getTableManter();
         atualizarTabela();
         
         // Botão "Buscar"
@@ -49,7 +50,6 @@ public class ManterUsuariosPresenter implements Observador{
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                PrincipalAdministradorPresenter presenterPrincipalAdministrador = new PrincipalAdministradorPresenter();
                 
                 view.dispose();
             }
@@ -61,7 +61,7 @@ public class ManterUsuariosPresenter implements Observador{
             @Override
             // Ao clicar no botão, a busca deve ser feita (oh)
             public void actionPerformed(ActionEvent e){
-                verUsuario(tableConsulta);
+                verUsuario(tableManter);
             }
         });
         
@@ -116,29 +116,37 @@ public class ManterUsuariosPresenter implements Observador{
     // Atualizar a tabela com os dados dos usuários
     public void atualizarTabela() {
         
-        DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
-        model.setRowCount(0); // Limpa todas as linhas da tabela
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JTable tableManter = view.getTableManter();
+                DefaultTableModel model = (DefaultTableModel) tableManter.getModel();
+                String[] columns = {"Nome", "Data", "Id"};
 
-        for (Usuario usuario : colecaoUsuarios.getUsuarios()) {
-            
-            // Adicione uma nova linha à tabela com os dados do usuário
-            Object[] rowData = {
-                usuario.getNomeUsuario(),
-                usuario.getDataCadastro(),
-                usuario.getId()
-            };
-            model.addRow(rowData);
-        }
+                model.setRowCount(0);
+
+                for (Usuario usuario : colecaoUsuarios.getUsuarios()) {
+                    
+                    model.addRow(new Object[]{
+                        usuario.getNomeUsuario(),
+                        usuario.getDataCadastro(),
+                        usuario.getId()
+                    });
+                }
+
+                model.fireTableDataChanged();
+            }
+        });
     }
     
-    public Usuario getSelecionado(JTable tableConsulta){
+    public Usuario getSelecionado(JTable tableManter){
         
-        DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
+        DefaultTableModel model = (DefaultTableModel) tableManter.getModel();
         
         // Obtendo o index da linha selecionada
-        int linhaSelecionado = tableConsulta.getSelectedRow();
+        int linhaSelecionado = tableManter.getSelectedRow();
         String stringIdSelecionado = String.valueOf( model.getValueAt(linhaSelecionado, 2 ));
-        Long idSelecionado = Long.parseLong( stringIdSelecionado );
+        Long idSelecionado = Long.valueOf( stringIdSelecionado );
         
         // Buscando na coleção
         Usuario usuario = colecaoUsuarios.getUsuario( idSelecionado );
@@ -148,7 +156,7 @@ public class ManterUsuariosPresenter implements Observador{
     
     public void buscarUsuario(){
         
-        DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
+        DefaultTableModel model = (DefaultTableModel) tableManter.getModel();
         model.setRowCount(0); // Limpa todas as linhas da tabela
         
         String campo = view.getComboBoxCampo().getSelectedItem().toString();
@@ -181,9 +189,9 @@ public class ManterUsuariosPresenter implements Observador{
     }
     
     // Pega o usuário selecionado e mostra nos JTxtFields
-    private void verUsuario(JTable tableConsulta){
+    private void verUsuario(JTable tableManter){
         
-        Usuario usuario = getSelecionado(tableConsulta);
+        Usuario usuario = getSelecionado(tableManter);
         
         // Exibindo nos JTxtFields
         view.getTxtNomeUsuario().setText( usuario.getNomeUsuario() );
@@ -220,25 +228,23 @@ public class ManterUsuariosPresenter implements Observador{
     public void editarUsuario(){
         
         Long id = Long.valueOf(view.getTxtId().getText());
-        Usuario usuario = colecaoUsuarios.getUsuario(id);
-
-        // Editando
-        usuario.setNomeUsuario( view.getTxtNomeUsuario().getText() );
-        usuario.setSenha( view.getTxtSenha().getText() );
-        usuario.setNumNotificacoesEnviadas(Integer.parseInt( view.getTxtNotificacoesRecebidas().getText() ));
-        usuario.setNumNotificacoesLidas(Integer.parseInt( view.getTxtNotificacoesLidas().getText() ));
+        String nome = view.getTxtNomeUsuario().getText();
+        String senha = view.getTxtSenha().getText();
+        int numNotEnviadas = Integer.parseInt( view.getTxtNotificacoesRecebidas().getText() );
+        int numNotLidas = Integer.parseInt( view.getTxtNotificacoesLidas().getText() );
+        
+        colecaoUsuarios.editarUsuario(id, nome, senha, numNotEnviadas, numNotLidas);
     }
     
     public void excluirUsuario(){
         
-        Long id = Long.parseLong(view.getTxtId().getText());
+        Long id = Long.valueOf(view.getTxtId().getText());
         Usuario usuario = colecaoUsuarios.getUsuario( id );
 
         // Excluindo
         colecaoUsuarios.removerUsuario(id);
     }
     
-    // Limpar campos
     private void limparCampos(){
         // Limpe os campos de entrada após a inclusão
         view.getTxtNomeUsuario().setText("");

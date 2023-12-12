@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import com.model.*;
 import com.observer.*;
 import com.view.EnviarNotificacaoParaView;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -56,7 +57,7 @@ public class EnviarNotificacaoParaPresenter implements Observador {
 //                }
 
                 presenterEnviarNotificacao.limparCampos();
-                // view.dispose();
+                view.dispose();
                 
                 MsgNotificacaoPresenter presenterMsgNotificacao = new MsgNotificacaoPresenter();
             }
@@ -68,7 +69,6 @@ public class EnviarNotificacaoParaPresenter implements Observador {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                EnviarNotificacaoPresenter presenterEnviarNotificacao = new EnviarNotificacaoPresenter();
                 
                 view.dispose();
             }
@@ -81,18 +81,25 @@ public class EnviarNotificacaoParaPresenter implements Observador {
     // Atualizar a tabela com os dados dos usuários
     public void atualizarTabela() {
         
-        DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
-        model.setRowCount(0); // Limpa todas as linhas da tabela
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
+                model.setRowCount(0); // Limpa todas as linhas da tabela
 
-        for (Usuario usuario : colecaoUsuarios.getUsuarios()) {
-            
-            // Adicione uma nova linha à tabela com os dados do usuário
-            Object[] rowData = {
-                usuario.getNomeUsuario(),
-                usuario.getId()
-            };
-            model.addRow(rowData);
-        }
+                for (Usuario usuario : colecaoUsuarios.getUsuarios()) {
+
+                    // Adicione uma nova linha à tabela com os dados do usuário
+                    Object[] rowData = {
+                        usuario.getNomeUsuario(),
+                        usuario.getId()
+                    };
+                    model.addRow(rowData);
+                }
+                
+                model.fireTableDataChanged();
+            }
+        });
     }
     
     // Método para obter múltiplos usuários selecionados

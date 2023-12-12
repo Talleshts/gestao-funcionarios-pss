@@ -44,7 +44,6 @@ public class LeituraNotificacaoPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
-                VisualizarNotificacoesPresenter presenterVisualizarNotificacoes = new VisualizarNotificacoesPresenter();
                 
                 view.dispose();
             }
