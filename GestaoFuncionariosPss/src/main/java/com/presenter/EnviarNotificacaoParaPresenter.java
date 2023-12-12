@@ -43,18 +43,6 @@ public class EnviarNotificacaoParaPresenter implements Observador {
             public void actionPerformed(ActionEvent e){
                 
                 enviarNotificacao(titulo, corpo);
-                
-                // Teste
-//                System.out.println("-----------");
-//                ArrayList<Notificacao> notificacoes = colecaoNotificacoes.getNotificacoes();
-//                for(Notificacao notificacao : notificacoes){
-//                    ArrayList<Long> enviadaPara = notificacao.getEnviadaPara();
-//                    
-//                    System.out.println("Notificacao: " + notificacao.getId());
-//                    for(Long id : enviadaPara){
-//                        System.out.println("Enviada para: " + id);
-//                    }
-//                }
 
                 presenterEnviarNotificacao.limparCampos();
                 view.dispose();

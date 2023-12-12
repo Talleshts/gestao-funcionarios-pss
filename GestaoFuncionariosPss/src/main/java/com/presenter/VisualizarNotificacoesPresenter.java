@@ -28,9 +28,9 @@ public class VisualizarNotificacoesPresenter implements Observador {
     JTable tableNotificacoesNaoLidas;
     JTable tableNotificacoesLidas;
     
-    private Long idUsuario = 0L;
+    private Long idUsuario;
     
-    public VisualizarNotificacoesPresenter(){
+    public VisualizarNotificacoesPresenter(Long idUsuario){
         
         colecaoNotificacoes = NotificacaoCollection.getInstancia();
         colecaoUsuarios = UsuarioCollection.getInstancia();

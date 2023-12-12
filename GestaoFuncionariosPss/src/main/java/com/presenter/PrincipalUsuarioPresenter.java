@@ -22,7 +22,9 @@ public class PrincipalUsuarioPresenter implements Observador {
     private UsuarioNotificacaoCollection colecaoUsuarioNotificacao;
     private PrincipalUsuarioView view;
     
-    public PrincipalUsuarioPresenter(){
+    private Long idUsuario;
+    
+    public PrincipalUsuarioPresenter(Long idUsuario){
         
         colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
         colecaoUsuarioNotificacao.adicionarObservador(this);
@@ -34,7 +36,7 @@ public class PrincipalUsuarioPresenter implements Observador {
             @Override
             // Ao clicar no botão, abrimos a tela de Alterar Senha
             public void actionPerformed(ActionEvent e){
-                AlterarSenhaPresenter presenterAlterarSenha = new AlterarSenhaPresenter();
+                AlterarSenhaPresenter presenterAlterarSenha = new AlterarSenhaPresenter(idUsuario);
                 
                 // view.dispose();
             }
@@ -46,7 +48,7 @@ public class PrincipalUsuarioPresenter implements Observador {
             @Override
             // Ao clicar no botão, abrimos a tela de Visualizar Notificações
             public void actionPerformed(ActionEvent e){
-                VisualizarNotificacoesPresenter presenterVisualizarNotificacoes = new VisualizarNotificacoesPresenter();
+                VisualizarNotificacoesPresenter presenterVisualizarNotificacoes = new VisualizarNotificacoesPresenter(idUsuario);
                 
                 // view.dispose();
             }

@@ -4,6 +4,7 @@
  */
 package com.presenter;
 
+import com.model.UsuarioCollection;
 import com.view.AlterarSenhaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,9 +15,13 @@ import java.awt.event.ActionListener;
  */
 public class AlterarSenhaPresenter {
     
+    private UsuarioCollection colecaoUsuarios;
     private AlterarSenhaView view;
+    
+    private Long idUsuario;
 
-    public AlterarSenhaPresenter() {
+    public AlterarSenhaPresenter(Long idUsuario) {
+        colecaoUsuarios = UsuarioCollection.getInstancia();
         view = new AlterarSenhaView();
         
         // Botão "Salvar" [Navegação]
@@ -25,7 +30,11 @@ public class AlterarSenhaPresenter {
             @Override
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
+                
+                alterarSenha();
                 MsgAlterarSenhaPresenter presenterAlterarSenha = new MsgAlterarSenhaPresenter();
+                
+                view.dispose();
             }
         });
         
@@ -42,5 +51,12 @@ public class AlterarSenhaPresenter {
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    public void alterarSenha(){
+        
+        String novaSenha = view.getTxtNovaSenha().getText();
+        
+        colecaoUsuarios.alterarSenha(idUsuario, novaSenha);
     }
 }

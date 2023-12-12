@@ -61,6 +61,14 @@ public class UsuarioCollection extends Observavel {
         this.notificarObservadores();
     }
     
+    public void alterarSenha(Long id, String novaSenha){
+        
+        Usuario usuario = getUsuario(id);
+        
+        usuario.setSenha(novaSenha);
+        this.notificarObservadores();
+    }
+    
     public Usuario getUsuario(long id){
         for(Usuario usuario : usuarios){
             if(usuario.getId() == id){
