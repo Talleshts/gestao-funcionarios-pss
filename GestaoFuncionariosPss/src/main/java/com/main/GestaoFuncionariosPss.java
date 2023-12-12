@@ -8,6 +8,7 @@ import com.dao.NotificacaoDAO;
 import com.dao.SolicitacaoDAO;
 import com.dao.UsuarioDAO;
 import com.presenter.LoginCadastroPresenter;
+import com.sistemalogger.SistemaLogger;
 
 /**
  *
@@ -17,10 +18,12 @@ public class GestaoFuncionariosPss {
 
     public static void main(String[] args) {
         
-        LoginCadastroPresenter presenterLoginCadastro = new LoginCadastroPresenter();
+        SistemaLogger.trocarLog(SistemaLogger.csvLog);
+
         new UsuarioDAO().criarTabelaUsuario();        
         new SolicitacaoDAO().criarTabelaSolicitacao();
         new NotificacaoDAO().criarTabelaNotificao();
-        //LoggerAdapter loggerAdapter = LoggerConfig.getLoggerAdapter();
+        
+        LoginCadastroPresenter presenterLoginCadastro = new LoginCadastroPresenter();
     }
 }
