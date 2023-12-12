@@ -5,6 +5,7 @@
 package com.view;
 
 import javax.swing.JButton;
+import javax.swing.JTable;
 
 /**
  *
@@ -33,7 +34,7 @@ public class EnviarNotificacaoParaView extends javax.swing.JFrame {
         btnEnviar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tableManter = new javax.swing.JTable();
+        tableEnviarPara = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +47,7 @@ public class EnviarNotificacaoParaView extends javax.swing.JFrame {
 
         btnVoltar.setText("Voltar");
 
-        tableManter.setModel(new javax.swing.table.DefaultTableModel(
+        tableEnviarPara.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -72,7 +73,7 @@ public class EnviarNotificacaoParaView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tableManter);
+        jScrollPane3.setViewportView(tableEnviarPara);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,6 +164,12 @@ public class EnviarNotificacaoParaView extends javax.swing.JFrame {
     public JButton getBtnVoltar() {
         return btnVoltar;
     }
+
+    public JTable getTableEnviarPara() {
+        return tableEnviarPara;
+    }
+    
+    
     
     
 
@@ -172,6 +179,6 @@ public class EnviarNotificacaoParaView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable tableManter;
+    private javax.swing.JTable tableEnviarPara;
     // End of variables declaration//GEN-END:variables
 }

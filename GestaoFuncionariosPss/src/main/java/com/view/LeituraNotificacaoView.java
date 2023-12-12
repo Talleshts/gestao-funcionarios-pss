@@ -5,6 +5,8 @@
 package com.view;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -28,20 +30,14 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtCorpoNotificacao = new javax.swing.JTextArea();
         labelTituloNotificacao = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
-        btnMarcarComoLido = new javax.swing.JButton();
         labelLido = new javax.swing.JLabel();
+        btnMarcarComoLido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel4.setText("{usuario.nome}");
-
-        jLabel5.setText("Usuário");
 
         txtCorpoNotificacao.setEditable(false);
         txtCorpoNotificacao.setColumns(20);
@@ -52,9 +48,14 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
 
         btnVoltar.setText("Voltar");
 
-        btnMarcarComoLido.setText("Marcar como lido");
-
         labelLido.setText("{lido/naolido}");
+
+        btnMarcarComoLido.setText("Marcar como lido/nao lido");
+        btnMarcarComoLido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMarcarComoLidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,24 +64,22 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMarcarComoLido, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(btnVoltar)))
-                        .addGap(38, 38, 38)
-                        .addComponent(labelLido))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTituloNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(192, 192, 192)
+                                .addComponent(btnVoltar)
+                                .addGap(123, 123, 123))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnMarcarComoLido)
+                                .addGap(70, 70, 70)))
+                        .addComponent(labelLido)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,22 +90,22 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(btnMarcarComoLido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoltar)
+                        .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(labelLido)
-                        .addGap(22, 22, 22)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap())
+                        .addGap(74, 74, 74))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMarcarComoLidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarcarComoLidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMarcarComoLidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,21 +143,28 @@ public class LeituraNotificacaoView extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
     public JButton getBtnMarcarComoLido() {
         return btnMarcarComoLido;
     }
 
-    public JButton getBtnVoltar() {
-        return btnVoltar;
+    public JLabel getLabelLido() {
+        return labelLido;
     }
+
+    public JLabel getLabelTituloNotificacao() {
+        return labelTituloNotificacao;
+    }
+    
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMarcarComoLido;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelLido;
     private javax.swing.JLabel labelTituloNotificacao;

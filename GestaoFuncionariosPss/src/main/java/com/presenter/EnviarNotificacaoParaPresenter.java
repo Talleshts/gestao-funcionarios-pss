@@ -10,23 +10,30 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import com.model.*;
+import com.observer.*;
 import com.view.EnviarNotificacaoParaView;
 
 /**
  *
  * @author Arthu
  */
-public class EnviarNotificacaoParaPresenter {
+public class EnviarNotificacaoParaPresenter implements Observador {
     
     private EnviarNotificacaoParaView view;
     private NotificacaoCollection colecaoNotificacoes;
     private UsuarioCollection colecaoUsuarios;
+    private UsuarioNotificacaoCollection colecaoUsuarioNotificacao;
     JTable tableConsulta;
     
     public EnviarNotificacaoParaPresenter(String titulo, String corpo){
         
         colecaoNotificacoes = NotificacaoCollection.getInstancia();
+        colecaoUsuarios = UsuarioCollection.getInstancia();
+        colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
         view = new EnviarNotificacaoParaView();
+        
+        tableConsulta = view.getTableEnviarPara();
+        atualizarTabela();
         
         // Botão "Enviar" [Navegação]
         view.getBtnEnviar().addActionListener(new ActionListener(){
@@ -35,7 +42,22 @@ public class EnviarNotificacaoParaPresenter {
             // Ao clicar no botão ALGO ACONTECE
             public void actionPerformed(ActionEvent e){
                 
+                enviarNotificacao(titulo, corpo);
                 
+                // Teste
+//                System.out.println("-----------");
+//                ArrayList<Notificacao> notificacoes = colecaoNotificacoes.getNotificacoes();
+//                for(Notificacao notificacao : notificacoes){
+//                    ArrayList<Long> enviadaPara = notificacao.getEnviadaPara();
+//                    
+//                    System.out.println("Notificacao: " + notificacao.getId());
+//                    for(Long id : enviadaPara){
+//                        System.out.println("Enviada para: " + id);
+//                    }
+//                }
+                
+                EnviarNotificacaoPresenter presenterEnviarNotificacao = new EnviarNotificacaoPresenter();
+                view.dispose();
                 
                 MsgNotificacaoPresenter presenterMsgNotificacao = new MsgNotificacaoPresenter();
             }
@@ -57,8 +79,25 @@ public class EnviarNotificacaoParaPresenter {
         view.setVisible(true);
     }
     
+    // Atualizar a tabela com os dados dos usuários
+    public void atualizarTabela() {
+        
+        DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
+        model.setRowCount(0); // Limpa todas as linhas da tabela
+
+        for (Usuario usuario : colecaoUsuarios.getUsuarios()) {
+            
+            // Adicione uma nova linha à tabela com os dados do usuário
+            Object[] rowData = {
+                usuario.getNomeUsuario(),
+                usuario.getId()
+            };
+            model.addRow(rowData);
+        }
+    }
+    
     // Método para obter múltiplos usuários selecionados
-    public ArrayList<Usuario> getSelecionados(JTable tableConsulta) {
+    public ArrayList<Usuario> getUsuariosSelecionados(JTable tableConsulta) {
 
         DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();
 
@@ -69,8 +108,8 @@ public class EnviarNotificacaoParaPresenter {
 
         // Para cada linha selecionada...
         for (int i = 0; i < linhasSelecionadas.length; i++) {
-            String stringIdSelecionado = String.valueOf(model.getValueAt(linhasSelecionadas[i], 2));
-            Long idSelecionado = Long.parseLong(stringIdSelecionado);
+            String stringIdSelecionado = String.valueOf(model.getValueAt(linhasSelecionadas[i], 1));
+            Long idSelecionado = Long.valueOf(stringIdSelecionado);
 
             // Busca na coleção e adicionando à lista
             Usuario usuario = colecaoUsuarios.getUsuario(idSelecionado);
@@ -89,16 +128,25 @@ public class EnviarNotificacaoParaPresenter {
         NotificacaoCollection.proximoId++;
         
         // Recuperando usuários selecionados
-        ArrayList<Usuario> selecionados = getSelecionados(tableConsulta);
+        ArrayList<Usuario> selecionados = getUsuariosSelecionados(tableConsulta);
         
         // Adicionando, na lista de ids da notificação, os ids dos usuários
         // para a qual a notificação foi enviada
         for (Usuario usuario : selecionados) {
-            novaNotificacao.setEnviadaPara(usuario.getId());
+            UsuarioNotificacao usuarioNotificacao = new UsuarioNotificacao(usuario.getId(), novaNotificacao.getId());
             usuario.incrementarNumNotificacoesEnviadas();
         }
         
         colecaoNotificacoes.adicionarNotificacao(novaNotificacao);
+        
+        
+    }
+    
+    public void atualizar(Observavel observavel){
+        
+        /*
+            Contexto útil: ArrayList<Usuario> (colecaoUsuarios.getUsuarios())
+        */
         
     }
 }

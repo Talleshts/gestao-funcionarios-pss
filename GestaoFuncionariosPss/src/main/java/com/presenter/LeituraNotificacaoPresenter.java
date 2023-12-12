@@ -4,6 +4,8 @@
  */
 package com.presenter;
 
+import com.model.*;
+import com.observer.*;
 import com.view.LeituraNotificacaoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,19 +17,24 @@ import java.awt.event.ActionListener;
 public class LeituraNotificacaoPresenter {
     
     private LeituraNotificacaoView view;
+    private UsuarioNotificacaoCollection colecaoUsuarioNotificacao;
     
-    public LeituraNotificacaoPresenter(){
+    private Long idUsuario = 0L;
+    
+    public LeituraNotificacaoPresenter(Notificacao notificacaoSelecionada){
+        colecaoUsuarioNotificacao = UsuarioNotificacaoCollection.getInstancia();
         view = new LeituraNotificacaoView();
         
-        // Botão "Marcar como lido"
+        view.getLabelTituloNotificacao().setText(notificacaoSelecionada.getTitulo());
+        
+        toggleLidoNaoLido(notificacaoSelecionada.getId());
+        
+        // Botão "Marcar como lido/não lido"
         view.getBtnMarcarComoLido().addActionListener(new ActionListener(){
             
             @Override
-            // Ao clicar no botão, o botão altera o texto pra "Marcar como não lido"
-            // e o componente "labelLido" troca de "Não lido" pra "lido"
-            // E vice-versa
             public void actionPerformed(ActionEvent e){
-                // Adicionar tudo
+                marcarLidoNaoLido(notificacaoSelecionada.getId());
             }
         });
         
@@ -45,5 +52,33 @@ public class LeituraNotificacaoPresenter {
         
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+    }
+    
+    public void toggleLidoNaoLido(Long idNotificacao){
+        
+        if(colecaoUsuarioNotificacao.foiLidaPor(idUsuario, idNotificacao)){
+            view.getLabelLido().setText("Lido");
+            view.getBtnMarcarComoLido().setText("Marcar como não lido");
+        }
+        else{
+            view.getLabelLido().setText("Não Lido");
+            view.getBtnMarcarComoLido().setText("Marcar como lido");
+        }
+    }
+    
+    public void marcarLidoNaoLido(Long idNotificacao){
+        
+        UsuarioNotificacao usuarioNotificacao = colecaoUsuarioNotificacao.getUsuarioNotificacao(idUsuario, idNotificacao);
+        
+        // Se estiver não lida, marca como lida
+        if(!usuarioNotificacao.isLido()){
+            usuarioNotificacao.setLido(true);
+        }
+        // Se estiver lida, marca como não lida
+        else{
+            usuarioNotificacao.setLido(false);
+        }
+        
+        toggleLidoNaoLido(idNotificacao);
     }
 }

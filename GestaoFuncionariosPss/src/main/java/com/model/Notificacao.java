@@ -15,15 +15,11 @@ public class Notificacao {
     private Long id;
     private String titulo;
     private String corpo;
-    private Long enviadaPara;
-    private boolean ehLida;
 
     public Notificacao(Long id, String titulo, String corpo) {
         this.id = id;
         this.titulo = titulo;
         this.corpo = corpo;
-        this.enviadaPara = enviadaPara;
-        this.ehLida = ehLida;
     }
 
     public Long getId() {
@@ -49,22 +45,4 @@ public class Notificacao {
     public void setCorpo(String corpo) {
         this.corpo = corpo;
     }
-
-    public Long getEnviadaPara() {
-        return enviadaPara;
-    }
-
-    public void setEnviadaPara(Long enviadaPara) {
-        this.enviadaPara = enviadaPara;
-    }
-
-    public boolean getEhLida() {
-        return ehLida;
-    }
-
-    public void setEhLida (boolean ehLida) {
-        this.ehLida = ehLida;
-    }
-    
-    
 }

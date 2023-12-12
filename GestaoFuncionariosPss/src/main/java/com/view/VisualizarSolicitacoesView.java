@@ -31,8 +31,6 @@ public class VisualizarSolicitacoesView extends javax.swing.JFrame {
 
         btnAbrirSolicitacao = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableSolicitacoes = new javax.swing.JTable();
@@ -52,10 +50,6 @@ public class VisualizarSolicitacoesView extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-
-        jLabel4.setText("{usuario.nome}");
-
-        jLabel5.setText("Administrador");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Solicitações");
@@ -107,12 +101,7 @@ public class VisualizarSolicitacoesView extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -132,11 +121,7 @@ public class VisualizarSolicitacoesView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbrirSolicitacao)
                     .addComponent(btnVoltar))
-                .addGap(25, 25, 25)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap())
+                .addGap(69, 69, 69))
         );
 
         pack();
@@ -204,8 +189,6 @@ public class VisualizarSolicitacoesView extends javax.swing.JFrame {
     private javax.swing.JButton btnAbrirSolicitacao;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableSolicitacoes;
     // End of variables declaration//GEN-END:variables

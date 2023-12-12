@@ -40,8 +40,6 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
         labelTituloNotificacao = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnEnviarPara = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         txtTituloNotificacao = new javax.swing.JTextField();
         labelTituloNotificacao1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -80,10 +78,6 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
 
         btnEnviarPara.setText("Enviar Para:");
 
-        jLabel4.setText("{usuario.nome}");
-
-        jLabel5.setText("Administrador");
-
         labelTituloNotificacao1.setText("Corpo");
 
         txtCorpoNotificacao.setColumns(20);
@@ -118,14 +112,7 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
                         .addGap(146, 146, 146)
                         .addComponent(btnEnviarPara)
                         .addGap(14, 14, 14)
-                        .addComponent(btnVoltar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(82, 82, 82))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnVoltar)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,11 +132,7 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnEnviarPara))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(12, 12, 12))
+                .addGap(56, 56, 56))
         );
 
         pack();
@@ -221,8 +204,6 @@ public class EnviarNotificacaoView extends javax.swing.JFrame {
     private javax.swing.JButton btnEnviarPara;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
